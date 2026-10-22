@@ -1,0 +1,805 @@
+# IRL.OS — MASTER PRODUCT IMPLEMENTATION PROMPT
+## Your life. Your system. Your next move.
+
+Act as a senior full-stack engineer, product designer, interaction designer, software architect, and AI engineer.
+
+Continue developing the EXISTING IRL.OS project. Do not discard its codebase or unnecessarily rebuild features that already work.
+
+Build IRL.OS into a distinctive personal operating system for real life. Its main interface is a desktop-style workspace with floating application windows, functional Linux-inspired window controls, a bottom application dock, and an interactive blue-wave background.
+
+The product helps people manage their goals, plan around the time they actually have, track progress, and receive useful AI advice.
+
+The application should be premium, original, practical, responsive, and genuinely interactive.
+
+IMPORTANT CONTEXT:
+
+- The account implementation may be incomplete or partially implemented.
+- The intended user experience does NOT require visible sign-in or registration.
+- Users should select a display name and enter their workspace immediately.
+- Use Firebase Anonymous Authentication behind the scenes if cloud persistence is configured and supported.
+- Never require a Gmail address, password, or Google sign-in.
+- One application-owned Gemini API key should power AI features for all users through secure server-side requests.
+- The desktop reference image attached to this prompt is the visual authority for the floating-window composition.
+- The application must not look like an aircraft cockpit, a crowded control panel, or a generic AI-generated SaaS dashboard.
+
+Before making changes, inspect the existing project, identify working features, and determine which components and data services can be reused.
+
+Do not overwrite working authentication, data access, or AI services simply to achieve the visual design.
+
+If an authentication or rendering operation is currently running, finish or safely resolve it before changing its implementation.
+
+---
+
+# 1. THE REFERENCE IMAGE IS THE VISUAL AUTHORITY
+
+I have attached a visual reference showing the intended IRL.OS desktop.
+
+Treat the attached image as the primary visual target.
+
+Recreate its overall composition as closely as practical:
+
+- Full desktop workspace.
+- Deep dark background.
+- Flowing blue waves behind the interface.
+- Floating application windows of different sizes.
+- Linux-inspired title bars.
+- Small red, yellow, and green window controls.
+- Overlapping windows with appropriate depth.
+- Compact bottom dock.
+- Restrained violet and cyan accents.
+- Clean, premium window styling.
+
+Study the relative positions, window proportions, spacing, overlap, borders, corners, and dock placement.
+
+Do not replace this concept with a conventional website dashboard, a grid of cards, a gallery of screenshots, or a generic operating-system mockup.
+
+Do not merely display the reference image as a background. Build real application components that visually recreate it.
+
+Prioritize visual fidelity to the reference before adding extra decorative elements.
+
+If the exact composition cannot be reproduced pixel for pixel, preserve the major proportions, placement, window structure, and visual hierarchy, then refine the implementation iteratively.
+
+Do not claim an exact visual match unless it has actually been checked.
+
+# 2. THE DESKTOP IS THE MAIN PRODUCT
+
+The desktop workspace is the core identity of IRL.OS, not an optional mode or a separate page users must discover.
+
+After the first-time display-name setup, users should enter the floating desktop immediately.
+
+Remove any separate user-facing navigation item or choice called:
+
+- Multi-Page Deck.
+- UI Reference Board.
+- Open Desktop.
+- Launch System.
+- Switch to Desktop Mode.
+
+Do not make the desktop a secondary experience.
+
+Use `/app/deck` for the desktop workspace if that route already exists, and make it the primary destination after profile initialization.
+
+Use `/` as the entry point that resolves the returning user's workspace or shows the first-time display-name screen as appropriate.
+
+Keep a conventional landing page only if required by the existing project; it must not interrupt the first-time user journey into the desktop.
+
+Existing feature routes may remain available internally. Opening those routes through a floating window must not break the windowed experience.
+
+Avoid creating two disconnected versions of IRL.OS.
+
+# 3. EXACT VISUAL DESIGN DIRECTION
+
+Use the attached reference as the main visual guide.
+
+The default theme should be a premium, dark desktop with a near-black foundation, deep blue waves, restrained electric violet accents, and selective cyan highlights.
+
+Use these starting design tokens:
+
+Dark theme:
+- Main background: `#090A0F`
+- Secondary background: `#0D1018`
+- Window surface: `#121622`
+- Elevated surface: `#181D2B`
+- Primary text: `#F4F5FA`
+- Secondary text: `#939BB0`
+- Borders: `#252B3B`
+- Violet: `#A78BFA`
+- Cyan: `#67E8F9`
+
+Keep the visual language consistent across all windows.
+
+Use readable modern typography, intentional spacing, subtle borders, refined corners, and restrained shadows.
+
+Do not add glowing borders to every element.
+
+Do not fill windows with unnecessary statistics, gauges, technical labels, and miniature panels.
+
+The result should feel like a thoughtfully designed desktop environment, not a spaceship dashboard.
+
+## Light theme
+
+Implement a complete light theme as well as the dark theme.
+
+Starting light-theme tokens:
+- Main background: `#F6F8FC`
+- Window surface: `#FFFFFF`
+- Secondary surface: `#EEF2F8`
+- Primary text: `#171923`
+- Secondary text: `#626B7B`
+- Borders: `#E1E6EF`
+- Violet: `#7557DE`
+- Cyan: `#087F9D`
+
+Design the light theme intentionally. Do not simply invert the dark-theme colors.
+
+In light mode, make the desktop windows readable, with clean surfaces, subtle shadows, clear title bars, and softer blue waves.
+
+Add a real light/dark toggle in the desktop interface and Settings.
+
+Persist the explicit theme preference across refreshes and navigation. Keep the user's preferred theme when they sign out of the current anonymous workspace or switch to another profile.
+
+All pages and floating windows must respond to the selected theme.
+
+# 4. INTERACTIVE BLUE-WAVE BACKGROUND
+
+The flowing blue waves are the signature visual feature of IRL.OS.
+
+Preserve the existing wave implementation if it works. Improve it rather than creating several competing background animations.
+
+Use Canvas, SVG, or lightweight animation code as appropriate.
+
+The wave field should:
+- Flow smoothly across the desktop.
+- Use layered blue and cyan curves with subtle violet tones.
+- Have slightly different speeds and amplitudes.
+- Remain visible in the spaces between windows.
+- Create a premium sense of depth.
+- Blend naturally into both themes.
+
+## Cursor interaction
+
+When the user moves the cursor across the background, nearby wave lines should respond subtly, bending toward the pointer or creating a gentle ripple.
+
+A click or tap may produce a small fading ripple.
+
+Keep interactions restrained and elegant.
+
+The waves must sit behind all windows and must never intercept clicks or interfere with typing, dragging windows, scrolling, or selecting text.
+
+Reduce the animation's intensity in content-heavy windows, especially the Focus Room.
+
+Respect `prefers-reduced-motion`.
+
+Use an efficient animation loop, handle resizing correctly, release animation frames and listeners on cleanup, and provide a static fallback when motion is disabled.
+
+Do not use a large video or heavy effects when a lightweight implementation can achieve the intended result.
+
+# 5. THE INITIAL WORKSPACE LAYOUT
+
+When a first-time user finishes entering their display name, initialize a visually balanced desktop workspace.
+
+The default arrangement should resemble the supplied reference:
+
+- One large, primary Today window near the center.
+- A smaller Goals window.
+- A smaller AI Perspective window.
+- A compact bottom dock containing the remaining applications.
+- Other secondary windows available through the dock or launcher.
+
+Do not open every application at full size at once.
+
+Use different window sizes based on the content and purpose of each application.
+
+Allow slight, natural overlap while keeping important window controls accessible.
+
+Make the desktop feel populated but not crowded.
+
+For returning users, restore their previous workspace arrangement when possible.
+
+Provide a Reset Workspace action that restores the default window layout without deleting their goals, tasks, progress, or profile.
+
+# 6. FUNCTIONAL LINUX-STYLE WINDOWS
+
+Every floating window must be a real interactive component.
+
+Use a title bar containing:
+- Three compact red, yellow, and green controls.
+- The application name.
+- An active-window indicator where appropriate.
+
+Implement the following behavior.
+
+## Dragging
+
+Users can drag windows by the title bar.
+
+Keep windows within reasonable workspace bounds.
+
+Dragging must not interfere with controls, text selection, form inputs, or scrolling.
+
+Provide appropriate touch behavior.
+
+## Stacking and focus
+
+Clicking a window brings it to the foreground.
+
+Use a reliable stacking order. The active window should have subtle visual emphasis, not an excessive glow.
+
+## Minimize
+
+Minimizing hides a window and leaves an entry in the bottom dock.
+
+Clicking the dock entry restores that same window and its state.
+
+## Maximize and restore
+
+Maximize expands a window within the available desktop workspace.
+
+Restoring returns it to its previous position and dimensions.
+
+Preserve window geometry when switching between maximized and normal states.
+
+## Close and reopen
+
+Closing hides a window without deleting its data.
+
+The user can reopen it from the dock or application launcher.
+
+Do not treat closing a window as deleting a goal, task, or account.
+
+## Prevent duplicate windows
+
+Use stable window IDs.
+
+If an application already has an open window, selecting its dock icon should normally bring that window forward rather than create duplicates.
+
+If the user closes a window, allow the application to be reopened.
+
+Do not introduce multiple editable instances that accidentally overwrite one another's state.
+
+# 7. THE BOTTOM DOCK IS THE PRIMARY NAVIGATION
+
+Create a compact, polished dock positioned along the bottom of the desktop.
+
+Include icons for:
+
+- Today.
+- Goals.
+- Planner.
+- Focus.
+- Insights.
+- AI Perspective.
+- Profile.
+- Settings.
+
+Provide:
+- Tooltips.
+- Hover feedback.
+- Open-window indicators.
+- Active-window indication.
+- Minimized-window restoration.
+- Reopening of closed windows.
+
+The dock must open applications as floating windows.
+
+Do not make it oversized, cluttered, or filled with fake system indicators.
+
+Optionally include a restrained application launcher for accessing every available application.
+
+Do not include fake CPU meters, network monitors, decorative system telemetry, or unnecessary technical labels.
+
+The dock should replace the conventional sidebar in the main desktop experience.
+
+# 8. INDIVIDUAL APPLICATION WINDOWS
+
+Every major IRL.OS section must be accessible as a floating window and connected to the actual application data.
+
+Use existing page components where practical. Otherwise, build compact views with the same business logic and data services.
+
+Do not use screenshots as substitutes for working applications.
+
+## A. Today
+
+Display:
+- A short greeting and date.
+- Today's tasks.
+- Available time.
+- Planned workload.
+- A useful recommendation for what to work on next.
+- A compact goal-progress summary.
+
+Keep this the main, most prominent window.
+
+Avoid an excessive grid of cards or decorative statistics.
+
+Use plain language such as:
+- "Today."
+- "Your tasks."
+- "Time available."
+- "Time planned."
+- "What should I work on next?"
+
+## B. Goals
+
+Show the user's actual goals with relevant progress, milestones, deadlines, and next actions.
+
+Let users create, edit, pause, resume, complete, archive, and delete goals with appropriate safeguards.
+
+Clicking a goal opens its detailed view in a floating window.
+
+## C. Individual Goal and Goal Map
+
+Show the chosen goal, linked milestones, relevant tasks, and current progress.
+
+Provide an interactive milestone roadmap with connected nodes.
+
+Users can inspect milestones, open related tasks, edit their details, and mark milestones complete when their criteria are satisfied.
+
+Use subtle wave-inspired connections instead of a complicated fantasy skill tree.
+
+## D. Planner
+
+Show a readable day or week schedule.
+
+Users must be able to inspect tasks, change scheduled dates, adjust durations, edit priorities, and move tasks between days.
+
+Respect task deadlines and daily availability.
+
+Use clear controls in addition to drag-and-drop if drag-and-drop is implemented.
+
+## E. Focus Room
+
+Show one selected task, its completion criteria, a readable timer, and essential controls.
+
+Support Start, Pause, Resume, Reset, and Finish.
+
+The timer must calculate elapsed time reliably and not automatically mark the task complete when time expires.
+
+Keep this window calm and uncluttered.
+
+## F. Insights and Reality Report
+
+Show useful summaries derived from real records.
+
+Examples:
+- Tasks planned and completed.
+- Progress by goal.
+- Planned versus actual time when actual time is recorded.
+- Milestones reached.
+- Tasks postponed.
+- Relevant weekly patterns.
+
+Only display charts that provide useful information.
+
+If there is insufficient history, communicate that honestly instead of inventing a trend.
+
+## G. AI Perspective
+
+Build a genuine, functional AI adviser rather than a static chat mockup.
+
+The adviser should understand the current user's goals, tasks, available time, deadlines, preferences, and relevant recorded progress.
+
+It should answer natural questions, give reasoned opinions, ask follow-up questions when needed, and propose useful actions.
+
+Keep the conversation layout readable and aligned with the desktop theme.
+
+Do not display raw API model identifiers, development logs, or technical labels to ordinary users.
+
+## H. Profile and Settings
+
+Show the current display name, theme preference, planning preferences, progression settings, profile switching, and relevant data controls.
+
+Allow the user to update their display name without losing their data.
+
+Make theme switching available here as well as in the desktop interface.
+
+# 9. FIRST-TIME ENTRY: DISPLAY NAME, NO VISIBLE LOGIN
+
+IRL.OS must not require visible email/password sign-in or social login.
+
+The first-time user flow should be:
+
+1. The user opens IRL.OS.
+2. The application silently initializes its anonymous user identity when cloud services are configured.
+3. If the profile has no display name, show a simple name-entry screen.
+4. The user enters a display name and clicks "Let's go."
+5. The application initializes that user's profile and preferences.
+6. The desktop workspace opens immediately.
+
+Use simple, natural wording.
+
+Heading:
+"Welcome to IRL.OS"
+
+Question:
+"What should we call you?"
+
+Button:
+"Let's go"
+
+Do not ask for an email address, password, or Google account.
+
+Returning users should go directly to their saved desktop if their anonymous session remains available.
+
+Allow users to change their name in Settings.
+
+The display name is not the account's unique identifier. Two users may choose the same display name and must still have separate workspaces.
+
+## Anonymous identity
+
+If Firebase is configured, use Firebase Anonymous Authentication to obtain a unique internal UID.
+
+Do not create a new anonymous identity on every route change or ordinary refresh.
+
+Wait for authentication initialization before loading private records.
+
+Use the UID for data ownership.
+
+Enable the Anonymous provider in Firebase if needed.
+
+If the environment does not support the required cloud configuration, explain the missing setup and provide a clearly labeled local-only fallback. Never pretend local storage is cloud synchronization.
+
+Explain in an appropriate place that anonymous profiles may be lost if their browser identity is cleared or they change devices. Do not claim that a display name alone can recover an account.
+
+Provide a "Start a new profile" action with confirmation. It should create a separate identity without deleting the old user's records.
+
+Do not show sign-in, sign-up, password reset, or Google OAuth screens.
+
+# 10. PRIVATE, SEPARATE USER DATA
+
+Each user must have independent records for:
+- Profile and preferences.
+- Goals and milestones.
+- Tasks.
+- Daily availability.
+- Planner state where appropriate.
+- Focus sessions.
+- Completion history.
+- Progress reports.
+- XP and achievements when enabled.
+- AI conversation history if saved.
+- Desktop layout preferences.
+
+Use the authenticated user's UID for ownership.
+
+Never use display names as security identifiers.
+
+Protect data at the backend or database-rule level, not just through frontend controls.
+
+For Firestore, use restrictive security rules that permit users to access only their own records.
+
+Validate ownership on relevant operations. Do not accept a browser-supplied UID as proof of authorization.
+
+When a user switches profiles, clear private records from in-memory state and load the new identity's records.
+
+Do not let one profile see another profile's task list, reports, settings, or AI conversation history.
+
+If the current project contains existing records, inspect them before changing ownership or data paths. Do not automatically delete or overwrite existing data.
+
+# 11. SHARED GEMINI API FOR EVERY USER
+
+All users should share the application's Gemini integration.
+
+**Ordinary users must never be asked to enter their own API key.**
+
+Use the server-side environment variable:
+
+`GEMINI_API_KEY`
+
+Store the secret in the supported secure configuration of the actual development and deployment environments.
+
+Every Gemini request must flow through secure server-side code or an appropriate authenticated backend service.
+
+The backend should:
+1. Validate the request.
+2. Establish the authenticated user's identity.
+3. Retrieve only the relevant records belonging to that user.
+4. Apply usage limits and rate limiting.
+5. Call Gemini using the application-owned secret.
+6. Validate the result.
+7. Return the response to the frontend.
+
+Never expose the API key in React code, browser storage, client-visible environment variables, public source code, or ordinary error messages.
+
+Verify the actual project environment and deployment support before choosing the server-side implementation.
+
+If the key or backend is not configured, explain what needs to be done. Do not expose the key as a workaround.
+
+Apply sensible per-IP and per-user usage limits, input-size limits, request timeouts, and usage monitoring where supported.
+
+Never trust the browser to decide which user's private records the AI can read.
+
+If Gemini is unavailable, the rest of IRL.OS must remain usable.
+
+# 12. THE AI ADVISER MUST GENERATE REAL ANSWERS
+
+Inspect and fix the existing AI implementation rather than simply drawing a chatbot interface.
+
+Do not use hardcoded responses or prewritten answers masquerading as AI.
+
+Every submitted question and functional suggestion chip must use the same actual Gemini request flow.
+
+The adviser should handle questions such as:
+- "What should I work on next?"
+- "I only have 20 minutes. What should I do?"
+- "Am I planning too much today?"
+- "Which goal have I neglected?"
+- "Help me adjust this week."
+- "What do you think of my progress?"
+- "Help me break this goal into smaller steps."
+
+The model must use relevant actual records and not invent activity.
+
+When appropriate, responses should include a clear recommendation, supporting evidence, reasoning, a concrete next action, and uncertainty where relevant.
+
+Do not force every answer into a long report. Simple questions should receive concise, natural answers.
+
+Suggested prompts must not trigger stored, preset answers. They must submit real questions.
+
+Support follow-up conversation context without sending an unnecessarily large conversation archive each time.
+
+Persist conversations per user if implemented. Never mix history between users.
+
+If the request fails, preserve the user's draft and show an honest retryable error. Never silently return a canned response.
+
+## AI-proposed actions
+
+The adviser can propose tasks, goal breakdowns, priority changes, or schedule changes.
+
+Do not allow the model to directly edit the database or change XP.
+
+Show material proposed changes in a review interface with:
+- Accept.
+- Edit.
+- Reject.
+- Cancel.
+
+Validate accepted changes through normal application logic before saving them.
+
+Do not claim that a change has been applied until the save succeeds.
+
+# 13. REAL PLANNING AND PROGRESS
+
+Keep the application useful even without Gemini.
+
+## Available time and workload
+
+Calculate workload from task duration estimates and compare it with the user's actual available time.
+
+If the planned workload exceeds the available time, explain the difference in plain language and offer to adjust the plan.
+
+Do not silently delete tasks or change deadlines.
+
+## Deterministic next action
+
+When AI is disabled, choose a sensible next task using priority, deadline, duration, availability, dependencies, and task status.
+
+Make the recommendation explainable.
+
+## Weekly report
+
+Calculate reports from actual recorded data, including planned and completed tasks and goal progress.
+
+Do not invent time spent. Distinguish estimates from actual recorded durations.
+
+## Optional progression
+
+Keep subtle XP, levels, titles, and milestone celebrations as optional features.
+
+Use a centralized deterministic XP formula and prevent duplicate rewards.
+
+Do not let AI award XP.
+
+Do not punish users for missing days.
+
+The product must remain useful when progression is disabled.
+
+# 14. LIGHT AND DARK THEME TOGGLE
+
+Implement both themes throughout the desktop and every floating window.
+
+Provide an accessible theme toggle with sun and moon icons.
+
+Persist the user's theme preference across refreshes and routes.
+
+Use a carefully designed light palette rather than simply inverting dark colors.
+
+Ensure:
+- Window surfaces are readable.
+- Title bars remain clear.
+- Dock icons remain visible.
+- Forms and inputs have appropriate contrast.
+- Wave colors adapt to the selected theme.
+- Charts remain legible.
+- The Focus Room remains calm.
+
+Do not reset the theme when the user switches windows or changes profile.
+
+Use shared CSS variables or design tokens so components respond consistently.
+
+# 15. NATURAL LANGUAGE THROUGHOUT THE PRODUCT
+
+Remove generic AI-sounding phrases from the entire website.
+
+Use simple, human language.
+
+Prefer:
+- "Today."
+- "Your goals."
+- "Time available."
+- "Time planned."
+- "What should I work on next?"
+- "Adjust your plan."
+- "Your week."
+- "What you finished."
+
+Avoid:
+- "Command Center."
+- "Initialize Objective."
+- "Highest-impact next move."
+- "Ground-Truth Context."
+- "Execute your ambitions."
+- "Adaptive Temporal Allocation."
+- "Live Advisor Dialogue."
+
+Do not fill the interface with empty motivational slogans or repetitive AI-written marketing copy.
+
+Keep IRL.OS as the product name, but let the actual utility define its identity.
+
+Every notification, empty state, error message, button label, tooltip, and page heading should be concise and understandable.
+
+# 16. CLEAN LUXURY VISUAL QUALITY
+
+The interface must look intentional, not automatically generated.
+
+The blue waves supply the atmosphere. The windows supply the structure. The content remains clean and readable.
+
+Avoid:
+- Identical cards repeated across all pages.
+- Excessive charts.
+- Tiny technical labels.
+- Repetitive statistics.
+- Glowing borders on everything.
+- Excessive glassmorphism.
+- Giant decorative gradients.
+- Crowded layouts.
+- Fake status indicators.
+- Dense cockpit-like panels.
+- Decorative buttons that do nothing.
+
+Use whitespace, typography, purposeful layouts, and restrained color accents.
+
+The reference image is the source of truth for the desktop's overall composition. Do not replace it with a completely different dashboard design.
+
+# 17. RESPONSIVE BEHAVIOR
+
+Desktop:
+Use the full floating-window workspace.
+
+Tablet:
+Reduce the number of simultaneously visible windows and make the workspace manageable.
+
+Mobile:
+Switch to a single-window or compact application-switching experience. Do not force several tiny floating windows onto a narrow screen.
+
+Maintain the dock or an accessible alternative. Preserve window navigation, essential controls, scrolling, forms, authentication initialization, and theme selection.
+
+The application must not break if the screen is resized while windows are open.
+
+# 18. DATA MODEL AND CODE QUALITY
+
+Use React and TypeScript with the existing project architecture.
+
+Reuse current components, routing, and data services where practical.
+
+Separate:
+- Window-management state.
+- UI components.
+- Goals and tasks.
+- Scheduling.
+- Persistence.
+- AI services.
+- Validation.
+- Reporting.
+- XP and achievements.
+
+Do not put the entire application in a single component.
+
+Use stable IDs, validated inputs, consistent timestamps, and reliable state updates.
+
+Prevent duplicate task completion events, XP rewards, and profile initialization.
+
+Handle loading, empty states, errors, missing configuration, and retry actions.
+
+Do not display a black screen when one window fails to render. Use appropriate error boundaries and useful fallback states.
+
+Do not install unnecessary dependencies or replace functioning services without a reason.
+
+# 19. DEMONSTRATION DATA
+
+If demo data exists, identify it clearly as sample data.
+
+A demo workspace may contain a few example goals, tasks, and milestones to make the desktop look populated on first view.
+
+Do not pretend sample history belongs to the current user.
+
+Provide a safe way to reset sample data without deleting real user records.
+
+For real profiles, generate progress and reports only from actual activity.
+
+# 20. IMPLEMENTATION ORDER
+
+Implement the changes in a controlled order:
+
+PHASE 1 — EXISTING PROJECT AUDIT
+Inspect routing, authentication, database access, Gemini service configuration, current theme, and existing components. Identify working features and outstanding errors.
+
+PHASE 2 — DEFAULT DESKTOP
+Make the floating desktop the primary user experience. Match the attached reference image, establish the top bar, floating windows, title bars, and dock.
+
+PHASE 3 — WINDOW MANAGEMENT
+Implement drag, stacking, minimize, maximize, restore, close, reopen, and workspace persistence.
+
+PHASE 4 — REAL APPLICATION WINDOWS
+Connect Today, Goals, Goal Map, Planner, Focus, Insights, AI Perspective, and Settings to actual application state.
+
+PHASE 5 — USER IDENTITY
+Finish the invisible anonymous identity and display-name flow, per-user storage, and restrictive data access. Do not interrupt existing authentication work without first resolving its state.
+
+PHASE 6 — AI ADVISER
+Verify the actual Gemini request flow, secure shared key, contextual retrieval, user isolation, natural responses, and approved action proposals.
+
+PHASE 7 — THEMES AND WAVES
+Implement and test light/dark themes and interactive waves.
+
+PHASE 8 — REFINEMENT AND TESTING
+Fix visual mismatches, functional errors, routing issues, and mobile behavior.
+
+Prioritize working functionality and visual fidelity over unnecessary new features.
+
+# 21. REQUIRED ACCEPTANCE TESTS
+
+Before declaring the application complete, verify the following in the actual environment:
+
+1. A first-time visitor can enter a display name without an email or password.
+2. The desktop opens automatically after profile setup.
+3. Returning users recover their existing anonymous workspace when the same valid browser session remains available.
+4. Different anonymous users have separate records.
+5. The attached reference's overall floating-window composition is reproduced closely.
+6. The dock opens every major section.
+7. Windows can be dragged, focused, minimized, maximized, restored, closed, and reopened.
+8. Closing a window never deletes user data.
+9. Task completion updates real data.
+10. Goals and tasks remain consistent across windows.
+11. Available-time adjustments change workload calculations.
+12. The focus timer behaves correctly.
+13. Reports use actual records.
+14. Gemini produces real responses rather than preset answers.
+15. AI requests use the application-owned server-side API key.
+16. The AI can answer follow-up questions with appropriate context.
+17. AI-proposed data changes require approval.
+18. No user can access another user's private records.
+19. The light/dark toggle works throughout the desktop.
+20. Waves animate without blocking interaction.
+21. The workspace works on desktop, tablet, and mobile.
+22. The application does not turn into a black screen when a window fails.
+23. The current working features remain intact.
+24. The browser console and relevant backend logs are checked for new errors.
+
+Do not claim that tests pass unless they have actually been performed.
+
+If an external service, backend secret, or Firebase configuration is missing, state exactly what needs to be configured.
+
+# FINAL REQUIREMENT
+
+IRL.OS must open directly into the floating desktop represented in the attached reference image.
+
+The desktop is the product, not an optional deck or reference board.
+
+Users select a display name and enter their personal workspace without visible sign-in screens.
+
+The workspace contains real floating applications, real user data, functional window controls, a bottom dock, a beautiful interactive blue-wave background, a complete light/dark theme system, and a genuinely useful AI adviser powered by the shared, securely configured Gemini API.
+
+Reproduce the reference image's composition as closely as practical. Maintain clean luxury styling and natural wording. Keep every component functional.
+
+Inspect the existing project, preserve working features, implement the changes incrementally, test the primary user journeys, and fix defects before declaring completion.

@@ -1,0 +1,993 @@
+# IRL.OS — COMPLETE FEATURE & INTERACTION SPECIFICATION
+
+## 1. THE CORE RULE
+
+Build IRL.OS as a fully functional personal operating system for real-life progress, not a collection of mockup screens.
+
+Every feature must have a clear purpose, useful content, working interactions, sensible empty states, and persistent data. Do not create buttons that do nothing, fake charts, decorative controls, hardcoded AI answers, or windows that only look interactive.
+
+Keep the existing IRL.OS identity, blue-wave background, premium dark aesthetic, light/dark themes, and floating desktop-window concept. Extend the existing application rather than replacing it with an unrelated design.
+
+The interface should feel like a polished desktop environment combined with a personal productivity application. It must be calm, intuitive, slightly futuristic, and genuinely useful.
+
+Use natural human language throughout the entire application. Avoid robotic AI-generated copy, corporate jargon, technical system labels, excessive cards, unnecessary statistics, and overcomplicated dashboards.
+
+---
+
+# 2. DESKTOP LAYOUT AND BOTTOM NAVIGATION
+
+## The desktop
+
+The desktop is the main application, not a separate demo page.
+
+- Keep the animated blue-wave background visible behind the windows.
+- Use elegant floating windows with rounded corners, subtle borders, restrained transparency, and soft shadows.
+- Windows must remain readable against the background.
+- Allow users to drag windows by their title bars.
+- Support minimizing, maximizing, restoring, closing, and reopening windows.
+- Prevent windows from becoming inaccessible off-screen.
+- Allow multiple windows to remain open simultaneously.
+- Give the active window a subtle highlight.
+- Keep window transitions smooth and fast.
+- Remember useful window positions and sizes during the session.
+- Do not force every feature into one giant dashboard.
+- Avoid excessive nested cards and unnecessary scrollbars.
+
+Each window must have a clear title, a short human explanation where useful, and the controls relevant to that feature.
+
+## Bottom dock: permanent navigation
+
+Place the main navigation at the bottom of the screen, following the provided reference image.
+
+The dock must contain these nine options in this exact order:
+
+1. Home
+2. Today
+3. Goals
+4. Planner
+5. Focus
+6. Insights
+7. Coach
+8. Profile
+9. Settings
+
+Use clean, recognizable icons with short labels. Keep the dock centered, compact, and elegant. It should float above the blue-wave background rather than look like a generic website navigation bar.
+
+### Hover and interaction behavior
+
+Every dock item must respond when the user moves their cursor over it.
+
+- Slightly enlarge the hovered icon.
+- Add a soft glow or colored highlight.
+- Move the icon upward by a few pixels.
+- Smoothly animate the label into view or brighten it.
+- Show a small tooltip if the label is otherwise hidden.
+- Use a spring-like transition that feels responsive without being distracting.
+- Give the selected item a persistent active indicator.
+- Return the icon to its normal state when the cursor leaves.
+- Add a subtle click animation when an item is selected.
+- Make keyboard focus visible for accessibility.
+- On touchscreens, use tap feedback instead of hover behavior.
+
+Use restrained electric-violet and cyan accents. Do not make every icon glow constantly.
+
+If actual device haptics are supported on a mobile device, a very light vibration may be used where appropriate. Never pretend that vibration occurred on desktop when the device does not support it.
+
+Hovering over an item must NOT automatically open a window. Hovering previews the interaction; clicking opens or switches to the feature.
+
+Clicking a dock item should open its corresponding window, bring an existing window to the foreground, or restore it if minimized. Clicking the active item again should not create duplicate windows.
+
+The dock must remain accessible even when all application windows are closed.
+
+---
+
+# 3. HOME — THE PERSONAL DESKTOP
+
+Home is the user's main starting point.
+
+It should feel like opening a personal workspace, not opening an analytics dashboard.
+
+### What Home contains
+
+**A. Personal greeting**
+
+Display a natural greeting using the user's chosen display name.
+
+Examples:
+- “Morning, Alex.”
+- “Ready to make today count?”
+- “Let's pick up where you left off.”
+
+Use the actual local time when available. Avoid repeating the same greeting on every visit.
+
+**B. Today's direction**
+
+Show one short, context-aware summary of what deserves attention today.
+
+Examples:
+- “Your main goal today is to finish your portfolio.”
+- “You've got a free hour this evening. Want to use it for your workout?”
+- “You have three tasks left. Start with the most important one.”
+
+Generate these summaries from the user's actual goals, schedule, tasks, and progress. Never invent personal activity.
+
+**C. Quick access**
+
+Provide compact shortcuts to:
+- Add a task.
+- Create a goal.
+- Open the planner.
+- Start a focus session.
+- Ask the Coach a question.
+
+Each shortcut must open the correct interface or perform the advertised action.
+
+**D. Continue where you left off**
+
+Show the most relevant unfinished task, active goal, or recently used focus session when appropriate.
+
+Clicking an item opens the corresponding feature.
+
+**E. Recent progress**
+
+Display a small, readable summary of meaningful recent activity, such as a completed task, a goal milestone, or a focus session.
+
+Do not fill Home with multiple charts, large metric cards, fake notifications, or repetitive statistics.
+
+**F. Personal shortcuts**
+
+Let users optionally pin frequently used windows or actions. Save their choices.
+
+### Home interactions
+
+- Clicking a task opens its details.
+- Clicking a goal opens that goal.
+- Clicking a progress item opens the relevant history.
+- Clicking a quick action starts the appropriate workflow.
+- Empty states should explain how to get started without making the interface feel unfinished.
+
+---
+
+# 4. TODAY — THE DAILY ACTION CENTER
+
+Today answers one question: “What should I do today?”
+
+It is a daily execution workspace, not another general task manager.
+
+### What Today contains
+
+**A. Daily intention**
+
+At the top, show a short prompt such as “What's the one thing you'd be glad you finished today?”
+
+Let the user enter a daily intention and save it.
+
+**B. Today's priorities**
+
+Display the most important tasks for the day, ordered by priority, deadlines, and available time.
+
+Each task should show:
+- Task name.
+- Associated goal, if applicable.
+- Estimated duration.
+- Priority.
+- Due time or deadline, if relevant.
+- Completion status.
+
+Do not show irrelevant metadata when a task does not need it.
+
+**C. Task management**
+
+Users must be able to:
+- Add a task.
+- Edit a task.
+- Complete or uncomplete a task.
+- Delete a task after confirmation where appropriate.
+- Change its priority.
+- Set or change a due date.
+- Set an estimated duration.
+- Assign it to a goal.
+- Reschedule it.
+- Add a short note.
+- Break a task into smaller subtasks.
+
+Completing a task must update the stored data and all relevant progress calculations.
+
+**D. Daily schedule**
+
+Show the day's scheduled commitments and planned work in a clear timeline.
+
+Make the distinction between fixed commitments and flexible tasks obvious.
+
+Allow users to move flexible tasks to a different available time. Never silently overwrite an existing fixed commitment.
+
+**E. Available time**
+
+Let users record how much time they realistically have today, or derive availability from their schedule when that data exists.
+
+Recommend tasks that fit the available time.
+
+For example, if the user has 25 minutes, suggest a suitable short task instead of a two-hour project.
+
+**F. End-of-day reflection**
+
+Offer a short optional check-in:
+- What went well?
+- What did you complete?
+- What needs to move to tomorrow?
+
+Save reflections and allow the user to skip them.
+
+### Today interactions
+
+Completing, rescheduling, or editing a task must immediately update the interface and persist the change. Changes must also appear in Goals, Planner, and Insights whenever relevant.
+
+---
+
+# 5. GOALS — TURN AMBITIONS INTO REAL PROGRESS
+
+Goals should help users translate something they want into actions they can actually take.
+
+### What Goals contains
+
+**A. Goals overview**
+
+Show the user's active goals in a clean list or spacious layout.
+
+Each goal should have:
+- Goal title.
+- Short description.
+- Category, if useful.
+- Target date, if set.
+- Current progress based on real data.
+- Current status.
+- Next actionable step.
+
+Allow filtering by active, completed, paused, and archived goals.
+
+**B. Create a goal**
+
+When the user clicks “Create goal,” open a focused form containing:
+
+- What do you want to achieve?
+- Why does it matter to you? (optional)
+- When would you like to achieve it? (optional)
+- How will you measure success?
+- How much time can you realistically give it?
+- Is there an existing task or milestone that belongs to it?
+
+Let users save a simple goal without completing every optional field.
+
+**C. Goal details**
+
+Opening a goal should show its own workspace containing:
+
+- Goal title and description.
+- Target date and measurable outcome.
+- Current progress.
+- Milestones.
+- Related tasks.
+- Recent activity.
+- Time invested, if tracked.
+- Upcoming actions.
+- Notes and reflections.
+- Edit, pause, complete, archive, and delete options.
+
+Do not display progress percentages unless there is a clear, honest way to calculate them.
+
+**D. Milestones**
+
+Allow users to divide a large goal into smaller milestones.
+
+For each milestone, support:
+- Title and optional description.
+- Due date.
+- Completion status.
+- Related tasks.
+- Notes.
+
+Users must be able to add, edit, reorder, complete, and remove milestones.
+
+**E. Next-step recommendations**
+
+Suggest one practical next action based on the goal's unfinished milestones, remaining time, and recent progress.
+
+The user must remain in control of whether to accept a suggestion.
+
+**F. Goal health**
+
+If useful, show simple explanations such as:
+- “You're making steady progress.”
+- “This goal has no next task yet.”
+- “Your target date is approaching.”
+
+Only make these statements when the underlying information supports them. Never manufacture a risk score.
+
+---
+
+# 6. PLANNER — MAKE TIME FOR WHAT MATTERS
+
+Planner helps users decide when work will happen.
+
+It must be more than a decorative calendar.
+
+### What Planner contains
+
+**A. Calendar views**
+
+Provide:
+- Day view.
+- Week view.
+- Month view.
+
+Use a clear calendar layout with readable labels and sensible spacing.
+
+**B. Events and commitments**
+
+Users can create and manage events with:
+- Title.
+- Date.
+- Start and end time.
+- Optional description.
+- Optional location.
+- Optional recurrence.
+- Optional reminder, if supported.
+
+Users must be able to edit and delete their events.
+
+**C. Task scheduling**
+
+Allow users to schedule tasks from Today or Goals directly into available time slots.
+
+Each scheduled task should show its title and duration.
+
+Prevent accidental overlapping appointments. Warn users when a proposed schedule conflicts with an existing commitment.
+
+**D. Availability and routines**
+
+Let users define their usual availability for each day of the week.
+
+Support recurring routines, such as:
+- Study time.
+- Work hours.
+- Exercise.
+- Personal projects.
+- Rest.
+
+Users must be able to edit or disable these routines.
+
+**E. Rescheduling**
+
+If a task is missed or moved, offer sensible options:
+- Move it to the next available slot.
+- Choose another time.
+- Leave it unscheduled.
+
+Never silently move important events or overwrite fixed commitments.
+
+**F. Planning suggestions**
+
+The Coach may recommend a realistic daily or weekly plan based on:
+- Available hours.
+- Task duration.
+- Priorities.
+- Deadlines.
+- Existing events.
+- The user's own goals.
+
+Show proposed changes for review before applying them.
+
+**G. Planner controls**
+
+Include clear controls for navigating dates, jumping to today, creating an event, and switching calendar views.
+
+Use the user's local timezone consistently.
+
+---
+
+# 7. FOCUS — A CALM, DISTRACTION-FREE ROOM
+
+Focus Room must feel noticeably different from the rest of the application.
+
+It should be quiet, spacious, and centered on one task. Do not make it look like a spaceship cockpit, a gaming HUD, or a complicated performance dashboard.
+
+### What Focus Room looks like
+
+- A clean, immersive workspace.
+- A subdued version of the existing blue-wave background.
+- One prominent task title.
+- A large, readable timer.
+- A simple start, pause, resume, and finish control.
+- Minimal supporting information.
+- Optional ambient sound controls.
+- A small way to view the current session's progress.
+
+When a session begins, reduce unnecessary interface elements and visual movement. Keep essential controls accessible.
+
+### A. Choose what to focus on
+
+Before starting, let the user:
+
+- Select an existing task.
+- Select a goal-related task.
+- Create a quick task.
+- Start an open-ended session without a task.
+- Choose a duration.
+
+Offer useful presets such as 15, 25, 45, and 60 minutes, while allowing a custom duration.
+
+### B. Timer
+
+The timer must be real and reliable.
+
+Support:
+- Start.
+- Pause.
+- Resume.
+- End early.
+- Finish.
+- Optional break after a completed session.
+
+Use an accurate time calculation rather than decrementing a counter that drifts when the browser is inactive.
+
+Restore the correct session state when the user returns to the application. Handle browser refreshes and minimized windows without incorrectly restarting the timer.
+
+### C. Session controls
+
+During a session, show only the essential information:
+- Current task.
+- Time remaining.
+- Timer controls.
+- Optional short task note.
+- Optional ambient sound control.
+
+Allow the user to leave Focus Room without losing their session.
+
+Do not automatically mark a task complete simply because the timer ends.
+
+### D. Ambient sounds
+
+If sound is implemented, provide a small optional selection such as:
+- Rain.
+- Soft ambient noise.
+- Nature.
+- Silence.
+
+Use actual playable audio assets. Include volume control and a clear mute option. Do not create fake audio buttons or play sound automatically.
+
+### E. Session completion
+
+When the timer finishes, show a calm completion state.
+
+Ask:
+- Did you make progress?
+- Did you finish the task?
+- Would you like to take a break or continue?
+
+Let users record an optional note.
+
+Save:
+- Start time.
+- End time.
+- Planned duration.
+- Actual duration.
+- Linked task or goal.
+- Whether the session was completed or ended early.
+- Optional reflection.
+
+### F. Focus history
+
+Show a compact history of previous sessions, total time invested, and recent consistency.
+
+Calculate these values from actual saved sessions.
+
+### G. Focus statistics
+
+If shown, include useful measures such as:
+- Time focused today.
+- Sessions completed this week.
+- Goals receiving the most focus time.
+
+Keep statistics secondary to the actual focus experience.
+
+---
+
+# 8. INSIGHTS — UNDERSTAND YOUR PROGRESS
+
+Insights should explain what is happening in the user's life and work, rather than overwhelming them with charts.
+
+### What Insights contains
+
+**A. Progress overview**
+
+Show meaningful trends based on actual recorded information:
+- Tasks completed over time.
+- Focus time by day or week.
+- Goal progress.
+- Planned versus completed work.
+- Consistency over time.
+
+Provide sensible date ranges, such as the last 7 days, 30 days, and a custom range.
+
+**B. Progress charts**
+
+Use a small number of readable charts.
+
+Every chart must:
+- Use real stored data.
+- Have a clear title.
+- Identify its time period.
+- Use understandable labels.
+- Display a useful empty state when insufficient data exists.
+
+Never generate random values to fill empty charts.
+
+**C. Patterns**
+
+Explain useful patterns only when enough data exists.
+
+Examples:
+- “You completed more tasks on the days you planned fewer of them.”
+- “You've spent most of your focus time on your study goal.”
+- “Your evening sessions have been more consistent this week.”
+
+Do not make unsupported claims about the user's behavior.
+
+**D. Goal progress**
+
+Show which goals are moving forward, which have stalled, and which lack a clear next step, based on actual activity.
+
+**E. Weekly review**
+
+Provide a weekly summary with:
+- What was completed.
+- What progressed.
+- What remains unfinished.
+- Where time was invested.
+- One or two possible improvements.
+
+**F. Honest measurements**
+
+Distinguish tracked data from estimates.
+
+If a metric cannot be calculated reliably, omit it or explain what information is missing.
+
+Do not use fabricated productivity scores, arbitrary percentages, or meaningless charts.
+
+---
+
+# 9. COACH — A REAL AI PERSONAL ADVISER
+
+The Coach is the conversational intelligence of IRL.OS.
+
+It must be connected to the Gemini API and generate context-aware responses from the user's real information. Do not simulate an AI chat with canned answers.
+
+### A. Coach interface
+
+Build a clean conversational workspace with:
+- A readable message history.
+- A clear input field.
+- A send button.
+- A stop-generation control when supported.
+- A way to start a new conversation.
+- Saved conversation history.
+- Useful suggested prompts.
+- Loading and error states.
+
+Do not clutter the conversation with excessive cards or permanent technical status panels.
+
+### B. Suggested prompts
+
+Offer useful examples such as:
+- “Help me plan the rest of today.”
+- “Why have I been falling behind on this goal?”
+- “Break this goal into manageable steps.”
+- “Find a realistic time for my next task.”
+- “Help me get back on track.”
+- “Review my week with me.”
+
+These are shortcuts to real conversations, not predetermined answers.
+
+### C. Real context
+
+When authorized and relevant, the Coach should be able to use the user's:
+- Active goals.
+- Milestones.
+- Tasks and deadlines.
+- Daily availability.
+- Planner events.
+- Focus history.
+- Progress history.
+- Previous messages in the current conversation.
+- Preferences explicitly recorded by the user.
+
+Only retrieve the information needed for the current request. Keep each user's data isolated.
+
+### D. Useful conversation
+
+The Coach must:
+- Understand follow-up questions.
+- Remember the relevant context of the current conversation.
+- Ask a clarifying question when necessary.
+- Avoid repeating generic advice.
+- Explain recommendations in plain English.
+- Admit when information is missing.
+- Distinguish facts from estimates.
+- Avoid claiming that it changed something when it did not.
+
+### E. Action proposals
+
+The Coach may propose actions such as:
+- Creating a task.
+- Breaking down a goal.
+- Moving a flexible task.
+- Creating a daily plan.
+- Adjusting a target date.
+- Suggesting a focus session.
+
+Before changing saved information, present a clear preview of the proposed changes.
+
+Provide:
+- Accept.
+- Edit.
+- Reject.
+
+Only apply changes after the user approves them. If an action fails, explain that it was not completed.
+
+### F. Gemini implementation
+
+Use one application-owned Gemini API key on the server.
+
+- Store the key in server-side environment variables.
+- Never expose it in frontend code or browser requests.
+- Route model calls through a protected server endpoint.
+- Validate inputs and handle errors.
+- Add appropriate rate limits.
+- Keep requests scoped to the authenticated user's data.
+- Show useful loading and retry states.
+- Do not fall back silently to hardcoded AI responses.
+
+If Gemini is unavailable, show a clear message and let the user retry.
+
+---
+
+# 10. PROFILE — THE USER'S PERSONAL SPACE
+
+Profile is where users manage their identity and personal preferences.
+
+### What Profile contains
+
+**A. Basic identity**
+- Display name.
+- Optional profile image or avatar.
+- Optional short personal description.
+
+**B. Personal direction**
+
+Allow users to record:
+- What matters to them.
+- Their main priorities.
+- Skills they want to develop.
+- Habits they want to build.
+- Long-term ambitions.
+
+These details should be optional and editable.
+
+**C. Preferences**
+- Preferred planning style.
+- Typical available hours.
+- Preferred focus-session lengths.
+- Preferred weekly review day.
+- Optional preferred language, if supported.
+
+**D. Personal progress**
+
+Display a concise summary of the user's actual activity and achievements.
+
+If optional XP, levels, titles, or achievements exist, keep them subtle and secondary. Do not turn the application into a full RPG.
+
+**E. Profile actions**
+
+Users should be able to:
+- Edit their details.
+- Save changes.
+- Review their personal information.
+- Access account and privacy options.
+- Sign out or reset their local session where applicable.
+
+Do not expose another user's information or allow profile switching to reveal someone else's data.
+
+---
+
+# 11. SETTINGS — COMPLETE AND ACTUALLY USEFUL
+
+Settings must be a real settings window with clearly grouped sections, not a page containing only a theme toggle.
+
+Organize settings into simple categories. Use a clean list of sections with a detail panel, or another compact layout that fits the desktop.
+
+## A. Appearance
+
+Include:
+- Dark theme.
+- Light theme.
+- System theme, if supported.
+- Accent color selection.
+- Reduced motion.
+- Background animation on/off.
+- Background animation intensity.
+- Window transparency, if supported.
+- Dock label visibility.
+- Interface density, if supported.
+
+Both light and dark themes must be fully designed. Do not merely invert the colors of the dark theme.
+
+Changing a setting should update the interface immediately where appropriate and persist the selection.
+
+## B. Desktop and windows
+
+Include:
+- Restore default window layout.
+- Remember window positions.
+- Default window size.
+- Dock behavior.
+- Animation preferences.
+- Option to reopen the previous workspace, if supported.
+
+Provide confirmation before resetting a custom layout.
+
+## C. Notifications
+
+Include:
+- Task reminders.
+- Upcoming deadline reminders.
+- Focus-session completion alerts.
+- Daily planning reminder.
+- Weekly review reminder.
+- Reminder time.
+- Quiet hours.
+- Browser notification permission status, if browser notifications are implemented.
+
+Never claim a notification is enabled if permission has not been granted.
+
+## D. Planning preferences
+
+Include:
+- Start of week.
+- Preferred calendar view.
+- Default task duration.
+- Default focus duration.
+- Working days.
+- Typical availability.
+- Timezone.
+- Preferred reminder timing.
+
+Use the correct local timezone and make it clear when a change affects scheduling.
+
+## E. Focus preferences
+
+Include:
+- Default focus duration.
+- Optional automatic break suggestions.
+- Optional session completion sound.
+- Default ambient sound.
+- Default ambient volume.
+- Full-screen focus option, if supported.
+
+Do not enable sounds or notifications without the user's choice.
+
+## F. AI Coach preferences
+
+Include:
+- Preferred response style: concise, balanced, or detailed.
+- Coaching style: supportive, direct, or reflective.
+- Whether the Coach should offer unsolicited suggestions, if implemented.
+- Clear controls for saved Coach conversations.
+- An explanation of what personal data the Coach can use.
+
+Changing the response style must affect actual model instructions. It must not be a cosmetic setting.
+
+## G. Privacy and data
+
+Include:
+- A plain-English explanation of how personal data is stored.
+- Information about the anonymous account or session.
+- Export personal data.
+- Clear Coach conversation history.
+- Clear focus history.
+- Reset personal progress.
+- Delete account and associated personal data.
+
+Require confirmation for destructive actions. Explain the consequences before proceeding.
+
+Export should produce a usable file containing the user's supported data.
+
+Deleting data must actually delete it from the relevant storage systems, subject to the application's documented retention requirements. Do not claim deletion succeeded until the operation succeeds.
+
+If the application uses anonymous authentication, explain that the display name is not a secure recovery method. Do not promise that users can recover their data on another device using only their name.
+
+## H. Accessibility
+
+Include:
+- Reduced motion.
+- Clear keyboard focus.
+- Readable contrast.
+- Text scaling, if supported.
+- Keyboard navigation support.
+
+## I. About IRL.OS
+
+Include:
+- Application name and version, if available.
+- A short explanation of IRL.OS.
+- Privacy information.
+- Terms or support links only when real destinations exist.
+
+## J. Save behavior
+
+Prefer immediate saving with clear feedback for simple preferences.
+
+For grouped forms, provide an explicit Save button when necessary.
+
+Show success and error feedback. Never display a false “Saved” message when persistence fails.
+
+---
+
+# 12. HOW THE FEATURES CONNECT
+
+IRL.OS must behave like one coherent application.
+
+- A task created in Today can be attached to a Goal.
+- A goal can contain milestones and related tasks.
+- A task scheduled in Planner appears in the relevant daily view.
+- A task launched in Focus remains linked to its original task and goal.
+- Completed Focus sessions contribute to Insights.
+- Completed tasks update relevant goal and daily progress.
+- The Coach uses current information to make recommendations.
+- Coach-approved actions update the appropriate feature.
+- Profile preferences inform planning and coaching.
+- Settings control the behavior of the whole application.
+
+Store each piece of information once and reuse it across the relevant views. Avoid creating disconnected duplicate versions of the same task or goal.
+
+Use a consistent data model, stable identifiers, proper validation, and reliable persistence.
+
+---
+
+# 13. EMPTY STATES, ERRORS, AND FEEDBACK
+
+Every feature must be designed for both populated and empty states.
+
+Examples:
+
+**No goals yet:** “Got something you want to work toward? Start with one goal.”
+
+**No tasks today:** “Your list is clear. Add something you want to get done.”
+
+**No focus history:** “Your focus history will appear here after your first session.”
+
+**No Insights data:** “A little activity is all we need to start spotting patterns.”
+
+**Coach unavailable:** “I couldn't reach the Coach just now. Your saved information is safe. Try again.”
+
+Do not display blank windows, endless loading animations, broken charts, or fake sample data as if it belongs to the user.
+
+Use small, unobtrusive confirmations for routine actions. Use confirmation dialogs for destructive actions. Explain validation errors beside the relevant field.
+
+---
+
+# 14. VISUAL AND MOTION DESIGN
+
+Maintain the existing visual identity.
+
+### Colors and surfaces
+- Deep charcoal and near-black in dark mode.
+- Carefully designed light surfaces in light mode.
+- Electric violet and cyan used selectively.
+- Blue-wave background visible behind the windows.
+- Subtle window borders and restrained shadows.
+- Consistent typography and spacing.
+
+### Motion
+- Dock icons respond to hover.
+- Buttons have subtle hover and pressed states.
+- Windows open and close smoothly.
+- Minimized windows animate toward the dock where practical.
+- The active window is visually distinguishable.
+- Transitions remain fast and unobtrusive.
+- Respect reduced-motion settings.
+
+### Avoid
+- Excessive neon.
+- Constant glowing elements.
+- Giant decorative statistics.
+- Fake system diagnostics.
+- Random floating particles covering content.
+- Unnecessary gradients on every component.
+- Generic AI marketing copy.
+- Multiple overlapping panels for information that belongs together.
+- Fake charts and fake notifications.
+- A spaceship, command-center, or military-dashboard aesthetic.
+
+The blue-wave background is a visual signature, not the main content. Keep text and controls easy to read.
+
+---
+
+# 15. RESPONSIVE BEHAVIOR
+
+On desktop, preserve the full floating-window environment and bottom dock.
+
+On smaller screens:
+- Adapt windows to the viewport.
+- Prevent horizontal overflow.
+- Keep all nine navigation options accessible.
+- Use a compact dock or an appropriate mobile navigation layout.
+- Replace dragging with accessible tap-based controls where necessary.
+- Keep the Focus Room immersive.
+- Ensure forms, calendars, charts, and settings remain usable.
+
+Do not simply shrink the desktop interface until everything becomes unreadable.
+
+---
+
+# 16. FIRST-TIME EXPERIENCE
+
+When someone first opens IRL.OS:
+
+1. Show a clean, minimal welcome screen.
+2. Ask for a display name.
+3. Provide one obvious Continue button.
+4. Create or restore the appropriate anonymous application session behind the scenes, where supported.
+5. Take the user directly to the desktop.
+6. Offer a subtle optional introduction to the dock.
+7. Let the user start using the application immediately.
+
+Do not show an unnecessary marketing dashboard, system architecture page, interactive simulator, sandbox, reference board, or multi-page deck.
+
+Do not require email or password entry for the intended anonymous onboarding flow.
+
+Keep the introduction brief. The user should be able to explore the application without being forced through a lengthy tutorial.
+
+---
+
+# 17. REQUIRED IMPLEMENTATION RULES
+
+- Preserve the existing project and its working functionality.
+- Inspect the current code before making changes.
+- Reuse existing components and data models when appropriate.
+- Do not replace functional features with static mockups.
+- Do not hardcode user progress, Coach answers, or analytics.
+- Persist user data reliably.
+- Keep users' records isolated by authenticated identity.
+- Keep secrets on the server.
+- Add sensible loading, error, and empty states.
+- Validate all forms.
+- Confirm destructive actions.
+- Make all controls keyboard-accessible.
+- Avoid unnecessary dependencies.
+- Avoid breaking existing routes and stored data.
+- Do not add fake features merely to make the interface look more advanced.
+
+# 18. FINAL ACCEPTANCE TEST
+
+Before considering the work finished, verify the following:
+
+1. All nine bottom-dock options work.
+2. Every dock icon has a polished hover, selected, and pressed state.
+3. Every feature opens the correct window.
+4. Windows can be dragged, minimized, restored, maximized, closed, and reopened.
+5. The background remains visible and readable behind the windows.
+6. Light and dark themes both work.
+7. Settings change actual application behavior.
+8. Goals, tasks, milestones, events, and focus sessions persist.
+9. Changes propagate between Today, Goals, Planner, Focus, and Insights.
+10. The Coach produces real Gemini responses using relevant user context.
+11. Coach-proposed actions require approval before modifying saved data.
+12. One user's records cannot be accessed by another user.
+13. Timers behave correctly after minimizing a window or refreshing the page.
+14. Empty states are helpful and contain working next steps.
+15. No major button is decorative or nonfunctional.
+16. No user-facing simulator, architecture showcase, sandbox, or reference-board page has been added.
+17. The application remains usable on smaller screens.
+18. No fake analytics or fabricated user data appears.
+
+**Final instruction:** Build the actual application, not a presentation of what the application might look like. Prioritize functionality, visual consistency, reliable data, and a calm, human experience. If a feature already exists, improve it without needlessly rebuilding it. If a feature is not implemented, implement it properly or clearly communicate the limitation rather than pretending it works.

@@ -1,0 +1,85 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile and personal preferences",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "onboardingCompleted": { "type": "boolean" },
+        "timeZone": { "type": "string" },
+        "avatarSeed": { "type": "string" },
+        "gamificationEnabled": { "type": "boolean" },
+        "defaultAvailabilityMinutes": { "type": "number" },
+        "autoReplanWithAi": { "type": "boolean" }
+      },
+      "required": ["uid", "email", "displayName", "createdAt"]
+    },
+    "Goal": {
+      "title": "Goal",
+      "description": "User goal with milestones",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "category": { "type": "string" },
+        "priority": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "title", "createdAt"]
+    },
+    "Task": {
+      "title": "Task",
+      "description": "User task item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "scheduledDate": { "type": "string" },
+        "slot": { "type": "string" },
+        "estimatedMinutes": { "type": "number" },
+        "priority": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "title", "scheduledDate", "createdAt"]
+    },
+    "XpLedgerEntry": {
+      "title": "XpLedgerEntry",
+      "description": "XP reward entry",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "xpAwarded": { "type": "number" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "userId", "xpAwarded", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Stores user profile and account configuration"
+    },
+    "/users/{userId}/goals/{goalId}": {
+      "schema": "Goal",
+      "description": "Stores private user goals and milestones"
+    },
+    "/users/{userId}/tasks/{taskId}": {
+      "schema": "Task",
+      "description": "Stores private user tasks"
+    },
+    "/users/{userId}/xp_ledger/{entryId}": {
+      "schema": "XpLedgerEntry",
+      "description": "Stores private user XP transaction records"
+    }
+  }
+}

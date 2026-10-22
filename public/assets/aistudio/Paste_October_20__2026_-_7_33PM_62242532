@@ -1,0 +1,790 @@
+# IRL.OS — COMPLETE GOOGLE AI STUDIO BUILD PROMPT
+## Your life. Your system. Your next move.
+
+Act as a senior full-stack developer, product designer, interaction designer, UI/UX specialist, and AI engineer.
+
+Build a complete, functional, responsive web application called **IRL.OS**.
+
+IRL.OS is a personal operating system for real life. It helps users organize their goals, plan around their actual available time, take meaningful actions, adapt when life changes, understand their progress, and receive personalized recommendations.
+
+The product must be useful without AI. When a Gemini API key is configured securely, it should gain an intelligent personal adviser that gives opinions, identifies problems in the user's plans, and recommends what to do next using actual user data.
+
+This is a real product, not a static mockup.
+
+IMPORTANT: Follow the visual design specification below. Do not ask me for another theme or wait for reference images. The dark futuristic dashboard described in this prompt is the design direction to implement.
+
+---
+
+# 1. VISUAL DESIGN — FOLLOW THIS EXACT DIRECTION
+
+Create a premium, futuristic, dark productivity interface inspired by the dashboard concept of a personal development operating system.
+
+The intended result should look like a polished, professionally designed web application with subtle game-inspired progression. It must NOT look like a generic AI-generated SaaS dashboard.
+
+## Color palette
+
+Use the following starting palette consistently:
+
+- Main application background: `#090A0F`
+- Secondary background: `#0D1018`
+- Card surface: `#121622`
+- Elevated card surface: `#181D2B`
+- Primary accent: electric violet `#A78BFA`
+- Secondary accent: bright cyan `#67E8F9`
+- Primary text: `#F4F5FA`
+- Secondary text: `#939BB0`
+- Muted borders: `#252B3B`
+- Success: `#4ADE80`
+- Warning: `#FBBF24`
+- Error: `#FB7185`
+
+Centralize these colors in design tokens so they can be adjusted consistently.
+
+Violet should represent primary interactions and personal progression. Cyan should provide selective secondary emphasis. Use green, amber, and red only where they communicate actual states.
+
+Do not apply every accent color everywhere.
+
+## Overall appearance
+
+The application should have:
+
+- A deep charcoal-black foundation.
+- Layered dark surfaces.
+- Subtle violet and cyan glow effects.
+- Clean, carefully aligned layouts.
+- Refined typography.
+- Thin, restrained borders.
+- Rounded rectangular components.
+- Small, purposeful icons.
+- High-quality charts and progress indicators.
+- Smooth micro-interactions.
+- An overall sense of depth without excessive decoration.
+
+Use a modern, readable sans-serif font available through a reliable font package or web font service. Establish a consistent hierarchy for page titles, section headings, body text, captions, and numerical values.
+
+Use subtle gradients only where they enhance the visual hierarchy, such as a level progression indicator or an important interactive element.
+
+Avoid giant neon headlines, excessive blur, glassmorphism on every component, huge empty spaces, excessive glowing borders, and random decorative graphics.
+
+The product should feel futuristic but practical.
+
+## Layout direction
+
+Desktop:
+- A persistent, compact sidebar.
+- A main content area with generous but efficient spacing.
+- Optional contextual panels where useful.
+- A consistent top area for the current page title and important actions.
+- A responsive grid that keeps the primary task and current priorities visually prominent.
+
+Mobile:
+- Compact navigation.
+- Single-column content where appropriate.
+- Readable task cards.
+- Usable dialogs and forms.
+- No horizontal overflow.
+- No important action hidden behind hover-only interactions.
+
+## Dashboard visual reference in words
+
+The main dashboard should resemble the previously discussed sample concept: a premium dark personal-development interface featuring a player-style profile area, an XP progress bar, daily quest cards, character attributes, and clear progress indicators. Use electric violet and cyan accents over charcoal surfaces.
+
+Translate that idea into a modern productivity product. Do not turn the entire website into a fantasy game interface.
+
+The visual result should have the same overall spirit, not an exact copy of another brand.
+
+## Visual consistency
+
+Apply the same visual system to:
+- Landing page.
+- Today dashboard.
+- Goals.
+- Individual goal pages.
+- Planner.
+- Focus room.
+- Insights.
+- AI Perspective.
+- Profile.
+- Settings.
+- Dialogs.
+- Forms.
+- Menus.
+- Notifications.
+- Loading and empty states.
+
+Use the theme as a consistent design system, not as an excuse to put every piece of content inside an identical card.
+
+Every component must have a clear visual purpose.
+
+---
+
+# 2. PRODUCT IDENTITY
+
+Product name: **IRL.OS**
+
+Tagline: **Your life. Your system. Your next move.**
+
+Category: Personal operating system, adaptive planning, and personal progress management.
+
+The product addresses a common problem: people have ambitions, but often cannot turn them into consistent actions. They create unrealistic schedules, lose track of their goals, postpone tasks, and rarely review what genuinely works.
+
+IRL.OS connects goals, time, tasks, decisions, and progress inside one coherent system.
+
+Its central workflow:
+
+**Set a goal → build a realistic plan → take action → track what happened → adapt → review → improve.**
+
+The core utility must always take priority over gamification.
+
+Do not build a generic to-do list with XP added afterward. Make the relationship between available time, priorities, goals, and next actions the defining feature.
+
+---
+
+# 3. MULTI-PAGE APPLICATION
+
+Implement proper client-side routing and build distinct pages that share the same underlying data.
+
+Create these routes:
+
+- `/` — Landing page.
+- `/app/today` — Daily command center.
+- `/app/goals` — Goal management.
+- `/app/goals/:id` — Individual goal detail.
+- `/app/plan` — Daily and weekly planning.
+- `/app/focus` — Focus room.
+- `/app/insights` — Progress analytics and weekly review.
+- `/app/coach` — AI Perspective.
+- `/app/profile` — Player profile and optional progression.
+- `/app/settings` — Application preferences and configuration.
+
+All these pages must be functional and connected. Do not build separate mockups with unrelated state.
+
+## Landing page
+
+Create a polished introduction to IRL.OS with:
+- Product identity.
+- A strong, concise headline.
+- A clear explanation of the real-life problem it solves.
+- A preview of the actual dashboard.
+- A short feature overview.
+- A functional call to action.
+- A concise explanation of how it works.
+
+Do not invent testimonials, fake user counts, ratings, or unsupported claims.
+
+The main call to action should enter the application or the configured authentication flow.
+
+## Shared application shell
+
+Inside the product, use a persistent sidebar on desktop and suitable compact navigation on mobile.
+
+Navigation should include Today, Goals, Planner, Focus, Insights, and AI Perspective. Profile and Settings can be accessed through the profile area.
+
+Clearly indicate the current page.
+
+Keep navigation consistent across every route. Avoid full page reloads for normal application interactions.
+
+---
+
+# 4. TODAY DASHBOARD
+
+This is the most important screen.
+
+It should immediately communicate:
+
+- What matters today.
+- How much time is available.
+- Whether the plan is realistic.
+- What to work on next.
+- How today's actions connect to larger goals.
+
+## Header and profile
+
+Display the user's name, current date, and a concise contextual greeting.
+
+Provide a profile summary that can include:
+- Avatar or profile icon.
+- Current level when progression is enabled.
+- Current XP.
+- Progress toward the next level.
+- Earned title, if applicable.
+
+The profile should be visually distinctive but compact.
+
+## Available time
+
+Allow the user to set the time available for the current day.
+
+Use an interactive slider or numerical control, with editable values and appropriate limits.
+
+Persist the value for the correct planning date.
+
+The value must directly affect workload calculations and recommendations.
+
+## Reality Check
+
+Calculate the relationship between available time and planned work.
+
+Example:
+- Available time: 60 minutes.
+- Planned task duration: 95 minutes.
+- Over capacity: 35 minutes.
+
+Use the actual task data for these calculations.
+
+Let the user inspect the tasks contributing to the workload and open an interactive replan flow.
+
+If the schedule fits, show that it fits without manufacturing urgency or congratulatory filler.
+
+## Next Best Move
+
+Display a prominent recommendation for the next useful action.
+
+Without AI, use transparent deterministic rules based on:
+- Deadlines.
+- Priorities.
+- Task duration.
+- Available time.
+- Goal importance.
+- Dependencies.
+- Task status.
+
+When AI is configured, the adviser may offer a contextual opinion or alternative recommendation.
+
+Each recommendation should have a reason based on actual records.
+
+Provide functioning actions to open, start, defer, or dismiss the recommendation.
+
+## Interactive dayboard
+
+Show tasks in a clean workspace with useful groupings such as:
+- Focus now.
+- Up next.
+- Later.
+- Completed.
+
+Every task card should display the information relevant to that task: title, linked goal, duration, priority, deadline, and status.
+
+Clicking a card opens its detail view.
+
+Support:
+- Completing a task.
+- Undoing an accidental completion.
+- Editing task details.
+- Changing priority.
+- Rescheduling.
+- Deferring.
+- Expanding or collapsing details.
+- Navigating to the linked goal.
+- Deleting with confirmation.
+
+All interactions must update real application state and persist through the configured storage.
+
+## Interactive progress widgets
+
+Include a small number of meaningful indicators:
+- Planned versus completed tasks.
+- Goal progress.
+- Current milestone.
+- Weekly activity.
+- Optional XP progression.
+
+Every interactive widget must open an appropriate detail view or perform a useful action.
+
+No decorative, fake, or nonfunctional buttons.
+
+---
+
+# 5. GOALS AND GOAL MAP
+
+Users should be able to enter ambitions in natural language.
+
+Examples:
+- Improve my grades.
+- Learn programming.
+- Finish a personal project.
+- Exercise consistently.
+- Prepare for an exam.
+- Build a portfolio.
+
+Each goal supports:
+- Title.
+- Description.
+- Category.
+- Priority.
+- Optional deadline.
+- Status.
+- Milestones.
+- Linked tasks.
+- Actual completion history.
+
+Support creating, editing, pausing, resuming, completing, archiving, and deleting goals.
+
+## Individual goal page
+
+Display the goal's details, progress, milestones, associated tasks, next action, and history.
+
+Users should be able to create milestones, attach tasks, change dates, and inspect how progress is calculated.
+
+## Interactive Goal Map
+
+Create a distinctive visual goal roadmap.
+
+Show a central goal connected to its milestones and relevant actions.
+
+Each node must be interactive:
+- Click a milestone to inspect it.
+- Open linked tasks.
+- Mark a milestone complete when its defined criteria are satisfied.
+- Add or edit actions where appropriate.
+
+Show accurate statuses for completed and unfinished milestones.
+
+Use subtle violet and cyan accents to distinguish the different stages. Apply the overall design consistently with the rest of the interface.
+
+This should be a useful interactive roadmap, not an unnecessarily complicated RPG skill tree.
+
+Goal completion must come from recorded milestones and completion criteria rather than merely passing a deadline.
+
+---
+
+# 6. PLANNER
+
+Create a dedicated daily and weekly planning page.
+
+Include:
+- Day view.
+- Week view.
+- Upcoming deadlines.
+- Task scheduling.
+- Available time per day.
+- Daily workload summaries.
+- Scheduling conflicts.
+
+Users should be able to move tasks between days, edit dates and durations, change priorities, and inspect task details.
+
+Use accessible move controls in addition to drag-and-drop if drag-and-drop is implemented.
+
+## Adaptive re-planning
+
+Allow users to say:
+- I only have 20 minutes today.
+- I missed yesterday's tasks.
+- I have an exam tomorrow.
+- Move the lower-priority tasks to another day.
+
+Without AI, provide a deterministic planning option.
+
+With AI, generate a personalized proposal based on current priorities, deadlines, available time, dependencies, and recorded activity.
+
+Show proposed changes before applying them.
+
+Allow the user to accept, edit, or reject the proposal.
+
+Never silently delete incomplete work, automatically complete a missed task, or change an existing deadline without approval.
+
+If the available constraints cannot all be satisfied, explain the conflict and offer alternatives.
+
+---
+
+# 7. FOCUS ROOM
+
+Create `/app/focus`, a dedicated workspace for one task.
+
+Include:
+- Task title.
+- Goal context.
+- Completion criteria.
+- Estimated duration.
+- Focus timer.
+- Minimal notes.
+- Start, pause, resume, reset, and finish controls.
+- A completion action.
+
+The timer must use reliable elapsed-time calculations rather than relying solely on repeated UI intervals.
+
+The session should survive ordinary component re-rendering and navigation as appropriate.
+
+Finishing a timer does not automatically mean the task is complete.
+
+Allow actual time to be recorded separately from the task estimate.
+
+Make this screen visually immersive using the same dark aesthetic, while reducing unnecessary distractions.
+
+---
+
+# 8. INSIGHTS AND REALITY REPORT
+
+Create a page for understanding actual progress.
+
+Include useful measures such as:
+- Tasks planned.
+- Tasks completed.
+- Completion rate.
+- Tasks rescheduled or skipped.
+- Progress by goal.
+- Progress by category.
+- XP earned if enabled.
+- Milestones reached.
+- Planned versus actual duration when actual time has been recorded.
+
+Use charts only where they reveal useful patterns.
+
+Make chart elements interactive when practical, letting users inspect the records behind the displayed values.
+
+Do not invent data or display misleading performance metrics.
+
+When insufficient history exists, use a clear empty state.
+
+## Weekly Reality Report
+
+Create a summary based on stored activity:
+- What was planned.
+- What was completed.
+- Which goals received attention.
+- Which goals received little attention.
+- Which tasks were postponed.
+- Milestones reached.
+- Relevant differences from previous weeks.
+- One or two realistic adjustments for the coming week.
+
+When AI is configured, it may interpret the data. Otherwise, generate deterministic summaries.
+
+Never invent activity, time spent, or behavioral explanations unsupported by the records.
+
+Allow the user to export a report or explicitly choose to share it.
+
+---
+
+# 9. AI PERSPECTIVE — OPTIONAL GEMINI ADVISER
+
+Create `/app/coach`, a personal adviser integrated into IRL.OS.
+
+This should not be a generic chatbot.
+
+Its purpose is to understand the user's actual goals, workload, available time, and progress, then provide specific opinions and recommendations.
+
+## Secure configuration
+
+Use Gemini when a valid API key is available through a supported secure configuration.
+
+If AI is not configured:
+- Keep the core application fully usable.
+- Explain that AI advice is unavailable.
+- Provide deterministic recommendations.
+- Give clear setup instructions.
+
+Never hardcode API keys into frontend code, browser storage, public repositories, or ordinary user records.
+
+Use secure server-side configuration or a supported server-side API route. Verify what the actual development environment supports.
+
+Never fake an AI response when the service is unavailable.
+
+## Questions the adviser should answer
+
+- What should I do next?
+- Am I planning too much today?
+- What is the best use of my next 30 minutes?
+- Which goal am I neglecting?
+- What should I prioritize this week?
+- Why is my current plan unrealistic?
+- What can I change to make this goal easier?
+- What pattern do you notice in my progress?
+- Which tasks should I postpone?
+- Give me your honest assessment of my current plan.
+
+Display contextually relevant suggested questions.
+
+## How the AI should respond
+
+When a recommendation is useful, structure it around:
+
+**My take:** A clear recommendation.
+
+**Evidence:** The relevant actual data supporting it.
+
+**Why:** The trade-offs and reasoning.
+
+**Next move:** A concrete action.
+
+**Alternative:** A reasonable second option where relevant.
+
+**Uncertainty:** What the available data does not establish.
+
+Keep answers proportional to the question. Short questions should not produce essays.
+
+The AI must be able to disagree respectfully with the user's plan when the records support another approach.
+
+Avoid generic motivational language, unsupported psychological claims, invented statistics, and confident predictions without evidence.
+
+## Personal context
+
+Only send relevant information:
+- Active goals.
+- Task list.
+- Available time.
+- Deadlines.
+- Priorities.
+- Recent completion records.
+- Weekly summaries.
+- Planning preferences.
+
+Do not pretend to know time spent when it has not been tracked.
+
+The AI must distinguish stored facts from its own interpretations.
+
+## AI actions
+
+The AI can propose:
+- New tasks.
+- Changes to priorities.
+- Schedule adjustments.
+- Goal breakdowns.
+- Weekly plans.
+
+Show an interactive preview before applying material changes.
+
+Provide functional Accept, Edit, Reject, and Cancel controls.
+
+Validate every proposal through normal application logic before saving it.
+
+Never allow the AI to bypass permissions, delete records silently, mark tasks complete, or manipulate XP directly.
+
+---
+
+# 10. OPTIONAL RPG-INSPIRED PROGRESSION
+
+Include subtle game-inspired features without allowing them to dominate the product.
+
+Features may include:
+- XP for eligible task completions.
+- Levels.
+- Unlockable titles.
+- Milestone celebrations.
+- Achievement history.
+
+Use a centralized deterministic XP formula.
+
+Prevent duplicate XP from repeated clicks, retries, or page reloads.
+
+Persist the XP ledger consistently. Ensure that current XP, level, and progression cannot become inconsistent.
+
+Only award achievements for verifiable events.
+
+Allow game-inspired features to be disabled in Settings.
+
+No multiplayer, public leaderboard, fantasy inventory, loot boxes, or punishing streak mechanics.
+
+Do not frame XP or levels as scientific measures of a person's intelligence, physical ability, or self-worth.
+
+The product must still make complete sense with gamification turned off.
+
+---
+
+# 11. PROFILE AND SETTINGS
+
+Create separate profile and settings pages.
+
+Allow appropriate editing of:
+- Display name.
+- Avatar or profile icon.
+- Planning preferences.
+- Default availability.
+- Local date and time settings.
+- Gamification preference.
+- AI configuration status.
+- Data export.
+- Data deletion.
+- Demo reset when applicable.
+
+Do not request unnecessary personal or sensitive information.
+
+Do not store secrets among ordinary profile preferences.
+
+Confirm destructive operations.
+
+---
+
+# 12. DATA MODEL AND PERSISTENCE
+
+Use React and TypeScript with a maintainable component architecture.
+
+Use a persistent backend such as Firebase Authentication and Firestore if supported and configured in the current environment.
+
+Use local storage only as an explicitly labeled demo fallback.
+
+Persist these data types:
+- User preferences.
+- Goals.
+- Milestones.
+- Tasks.
+- Task completion events.
+- Daily availability.
+- XP ledger.
+- Achievements.
+- Focus session records where appropriate.
+- Historical activity for reports.
+
+Use stable IDs and timestamps.
+
+Validate data before saving.
+
+Protect user data with backend access rules. Do not rely solely on frontend visibility to enforce permissions.
+
+Prevent duplicate task completion events and XP awards.
+
+Ensure saved records survive refreshes and ordinary navigation.
+
+Do not pretend that local-only data is cloud synchronized.
+
+---
+
+# 13. FUNCTIONALITY AND UX REQUIREMENTS
+
+All visible interactive controls must work.
+
+Include:
+- Working forms.
+- Editable task cards.
+- Expandable panels.
+- Functional navigation.
+- Working dropdowns.
+- Interactive sliders.
+- Task movement.
+- Responsive charts.
+- Confirmation dialogs.
+- Functional filters.
+- Loading states.
+- Useful errors.
+- Save confirmations.
+- Empty states.
+- Keyboard navigation.
+- Accessible labels.
+- Responsive layouts.
+
+Do not create a dead button, fake slider, nonfunctional dropdown, or placeholder interaction.
+
+Do not use animation to disguise missing functionality.
+
+A user should be able to understand what happened after an action and whether it was successfully saved.
+
+---
+
+# 14. TECHNICAL QUALITY
+
+Keep the project separated into sensible modules:
+- Pages.
+- Shared components.
+- Business logic.
+- Scheduling.
+- Goal and task management.
+- AI integration.
+- Persistence.
+- XP engine.
+- Validation.
+- Reports.
+
+Avoid one enormous component.
+
+Keep AI output separate from trusted application logic.
+
+Validate model responses against defined schemas before saving anything.
+
+Handle network failures, API errors, rate limits, invalid credentials, and malformed AI output.
+
+AI failure must not destroy or block access to saved goals and tasks.
+
+Keep the application usable when AI is disabled.
+
+---
+
+# 15. DEMO EXPERIENCE
+
+Provide a clearly labeled demo experience with:
+- Several example goals.
+- Related milestones.
+- Tasks with different priorities and durations.
+- Some completed and some incomplete tasks.
+- An availability constraint that demonstrates the Reality Check.
+- Sample history that supports a meaningful report.
+
+The demo should allow someone to:
+1. Change today's available time.
+2. See whether the schedule fits.
+3. Replan the day.
+4. Complete a task.
+5. Observe genuine progress updates.
+6. Open a goal roadmap.
+7. Start a focus session.
+8. Inspect insights.
+9. Request AI advice when configured.
+
+Sample data must never be represented as genuine personal history.
+
+Resetting demo data must never erase actual user account records.
+
+---
+
+# 16. SEVEN-DAY BUILD PRIORITIES
+
+Prioritize a functional one-week prototype.
+
+Day 1: Create the project, dark visual system, navigation, shared application shell, and Today screen.
+
+Day 2: Build goals, milestones, tasks, and data persistence.
+
+Day 3: Build the Planner, availability controls, workload calculations, and deterministic recommendations.
+
+Day 4: Implement the Focus Room, completion logic, optional XP, and the Goal Map.
+
+Day 5: Build Insights, the Reality Report, and secure Gemini integration.
+
+Day 6: Refine responsive behavior, interactive details, accessibility, and error handling.
+
+Day 7: Test the main flows, correct defects, configure deployment, and prepare the demonstration.
+
+Prefer reliable functionality over extra decorative features.
+
+Do not claim that a feature or backend works unless it has actually been implemented and tested.
+
+---
+
+# 17. ACCEPTANCE TESTS
+
+Before declaring the build complete, test the actual application.
+
+1. Create and edit goals.
+2. Add milestones and tasks.
+3. Change available time and see correct workload totals.
+4. Receive a deterministic next-action recommendation.
+5. Complete a task and update the associated records.
+6. Prevent duplicate XP rewards.
+7. Reschedule work and preserve incomplete tasks.
+8. Review a proposed plan before applying changes.
+9. Use the focus timer correctly.
+10. Generate an accurate report from real stored data.
+11. Verify persistence after refresh.
+12. Use the app without Gemini credentials.
+13. Configure Gemini securely and obtain a contextual recommendation.
+14. Verify that AI-proposed changes require approval.
+15. Verify mobile layouts.
+16. Verify data isolation between authenticated users.
+17. Confirm that demo resets do not erase real data.
+
+Fix actual failures rather than merely reporting them.
+
+---
+
+# FINAL INSTRUCTION
+
+Build IRL.OS as a visually distinctive, premium dark personal operating system.
+
+Use charcoal-black surfaces, electric violet and cyan accents, clean typography, purposeful animation, interactive cards, clear progression indicators, and a carefully structured dashboard.
+
+The aesthetic should follow the dark futuristic dashboard example described in this prompt. Do not wait for additional themes and do not ask me to upload a design reference.
+
+The product's defining feature is the connection between goals, available time, tasks, recorded progress, and personalized recommendations.
+
+Every interactive element must serve a purpose. The application must work without AI, gain meaningful capabilities when Gemini is configured, preserve user data, and provide accurate progress information.
+
+Build a complete functioning application, not just a beautiful screenshot.

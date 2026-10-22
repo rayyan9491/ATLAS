@@ -1,0 +1,855 @@
+# IRL.OS — COMPLETE VISUAL REDESIGN SPECIFICATION
+## Detailed Design System · All 9 Pages · Existing Application Must Be Preserved
+
+You are modifying the existing IRL.OS application in Google AI Studio.
+
+The previous visual refinement produced almost no noticeable change. The current website still looks too basic. I need a meaningful, clearly visible visual upgrade, with exact implementation requirements rather than vague instructions to "make it more premium."
+
+Your task is to implement a detailed, cohesive visual redesign of the existing IRL.OS interface, using the attached Finova dashboard screenshot as visual inspiration.
+
+The reference should guide the visual richness, panel composition, dark surfaces, blue accents, and restrained blue neon edge finishing.
+
+Do NOT copy Finova's branding, content, metrics, charts, product features, or exact layout. This is still IRL.OS, with its own purpose, branding, and nine-page structure.
+
+IMPORTANT: Inspect the existing project before editing. Make actual changes to the current codebase. Do not return a design proposal, a mockup, or another list of recommendations.
+
+---
+
+# PART 1 — THE EXACT CREATIVE DIRECTION
+
+## 1.1 The intended appearance
+
+IRL.OS should look like a premium, thoughtfully designed personal productivity application.
+
+The design must combine:
+- A deep navy and charcoal interface.
+- Clearly separated, carefully arranged content panels.
+- Refined blue-gray surfaces.
+- Thin electric-blue and cyan borders on selected elements.
+- Subtle blue neon finishing around selected panel edges.
+- Beautiful typography and strong visual hierarchy.
+- Well-balanced spacing and varied panel proportions.
+- Clean, recognizable icons.
+- Gentle shadows and visual depth.
+- Subtle, smooth interaction feedback.
+
+The result should feel polished enough for a professional productivity startup, with a little futuristic character.
+
+It must NOT look like:
+- A basic website where only the background color was changed.
+- A generic dashboard made entirely of identical cards.
+- A completely flat interface with no visual hierarchy.
+- An extreme science-fiction control center.
+- A holographic interface covered in neon.
+- An unrelated copy of the reference product.
+
+Target a moderate-to-high level of visual detail. Make the difference from the current website obvious without adding unnecessary complexity.
+
+## 1.2 Design hierarchy
+
+Use three clear levels of visual importance.
+
+**Level 1 — Primary content**
+
+The most important content on a page should immediately attract attention through size, spacing, contrast, and placement. Examples include the main page heading, the primary task area, the main calendar, the focus timer, and the Coach conversation.
+
+**Level 2 — Supporting panels**
+
+Related information should be arranged into clearly defined panels with consistent padding, subtle borders, and an appropriate surface color. Supporting content must not compete with the main task.
+
+**Level 3 — Secondary details**
+
+Descriptions, timestamps, metadata, helper text, and minor labels should use quieter colors and smaller typography while remaining readable.
+
+Do not give every element equal visual weight. The page should have an obvious first, second, and third thing to look at.
+
+---
+
+# PART 2 — IMPLEMENT A CONSISTENT DESIGN SYSTEM
+
+Do not make isolated, inconsistent CSS changes on random pages.
+
+Inspect the existing components and styles, then define or update reusable design tokens and component styles.
+
+Use the following values as a starting point. Adapt them where necessary to preserve the existing IRL.OS identity, but stay within this visual direction.
+
+## 2.1 Color palette
+
+Use a restrained palette similar to the following:
+
+| Purpose | Suggested color |
+|---|---|
+| Main application background | `#080D18` |
+| Secondary background | `#0B1220` |
+| Primary panel surface | `#101A2B` |
+| Secondary panel surface | `#131F32` |
+| Hovered surface | `#192941` |
+| Standard border | `#24354C` |
+| Subtle blue border | `#294B75` |
+| Primary electric blue | `#3988FF` |
+| Bright cyan highlight | `#59C8FF` |
+| Main text | `#F0F5FF` |
+| Secondary text | `#A7B6CA` |
+| Muted metadata | `#7789A4` |
+| Violet accent | `#8B7CFF` |
+| Success indicator | `#55C99A` |
+| Warning indicator | `#F0B95B` |
+| Error indicator | `#F07178` |
+
+These are design references, not mandatory replacements for every existing color.
+
+Use semantic colors consistently. Success should mean success, warning should mean warning, and error should mean an actual error.
+
+Do not use bright blue for all text, borders, icons, and backgrounds simultaneously.
+
+## 2.2 Background treatment
+
+The background must have more depth than a flat black rectangle.
+
+Use a deep navy base with subtle tonal variation and restrained blue atmospheric lighting.
+
+Preserve the existing IRL.OS blue-wave background and animation if already present. The wave treatment should remain visible in appropriate areas without reducing text readability.
+
+Requirements:
+- Do not remove or replace the existing blue-wave identity.
+- Do not cover the entire background with a solid card-like surface unnecessarily.
+- Use subtle gradients to introduce depth, not to decorate everything.
+- Keep page content readable against the background.
+- Do not add random particles, stars, or distracting animated objects.
+- Avoid extreme bloom and large neon clouds.
+- Make background animation subtle and respect reduced-motion preferences.
+
+Where page layouts naturally require solid surfaces, use the specified dark panel colors.
+
+## 2.3 Panel and card construction
+
+Restyle existing panels with a consistent design system.
+
+Standard panels should generally have:
+- A dark blue-gray surface that is visibly distinct from the page background.
+- A thin, restrained border.
+- A consistent corner radius, approximately 10–14 pixels where suitable.
+- Comfortable internal padding, usually around 16–24 pixels depending on panel size.
+- A subtle shadow that establishes separation without looking heavy.
+- Consistent heading placement.
+- Proper alignment between content and controls.
+
+Use a mixture of panel sizes and importance levels.
+
+Do not wrap every paragraph, label, or individual task in its own oversized card.
+
+Use a panel when it groups related information or provides useful visual structure. Use simple lists and text when a panel would add unnecessary clutter.
+
+Create visual variation through layout and hierarchy rather than through random decorative styling.
+
+## 2.4 Borders and blue neon finishing
+
+The blue edge finishing is a defining part of this redesign.
+
+Implement actual, visible blue edge accents in the rendered interface.
+
+Use three levels of treatment:
+
+**Standard panel**
+
+A thin, subdued blue-gray border. No prominent glow.
+
+**Emphasized panel**
+
+A thin electric-blue or cyan-tinted border, paired with a very soft blue outer shadow.
+
+**Active or focused component**
+
+A clearer blue border, a restrained edge glow, and an obvious interactive or focus state.
+
+Use emphasized borders on selected important panels, such as a primary daily overview, active navigation item, important progress section, or selected calendar region.
+
+The glow should be restrained but visible. It must not be so subtle that the result looks identical to the original website.
+
+Do not give every single component the strongest glow. The contrast between standard surfaces and emphasized blue-edged surfaces is what makes the design work.
+
+Avoid:
+- Thick luminous borders.
+- Multiple stacked neon shadows.
+- Blinding cyan outlines.
+- Neon text everywhere.
+- Permanent glowing effects on every button and card.
+
+## 2.5 Typography
+
+Inspect the existing font system and preserve it if it already suits IRL.OS. Otherwise, choose a compatible, clean modern sans-serif font.
+
+Create a consistent hierarchy:
+
+- Main page headings: approximately 28–34 pixels on desktop, with a strong but not excessively heavy weight.
+- Major panel headings: approximately 17–21 pixels.
+- Task and item titles: approximately 14–16 pixels.
+- Primary body text: approximately 14–16 pixels.
+- Supporting text: approximately 12–14 pixels.
+- Small metadata: approximately 11–12 pixels when readable.
+
+These are guidelines, not rigid values for every component.
+
+Requirements:
+- Headings must clearly differ from body text.
+- Use font weight and spacing deliberately.
+- Avoid making every heading large and bold.
+- Avoid excessive uppercase labels.
+- Keep important information readable.
+- Use consistent line heights and text alignment.
+- Truncate long metadata only when appropriate, and make full content accessible.
+- Do not create text clipping when applying new panel sizes.
+
+The overall result should feel carefully typeset rather than randomly assembled.
+
+## 2.6 Spacing and layout grid
+
+Use a consistent spacing system based on approximately 4-pixel increments.
+
+Typical spacing:
+- 4–8 pixels for closely related icons and labels.
+- 8–12 pixels within compact control groups.
+- 12–16 pixels between related items.
+- 20–24 pixels between major groups.
+- 24–32 pixels between distinct sections.
+
+Use consistent page margins and grid alignment.
+
+Avoid:
+- Unnecessarily large empty gaps.
+- Crowded groups of unrelated controls.
+- Uneven card edges.
+- Different padding values on visually similar components without reason.
+- Excessive whitespace that makes the page feel unfinished.
+
+The page should look organized and intentional at both large and small screen sizes.
+
+## 2.7 Buttons and interactive elements
+
+Refine existing buttons without changing their underlying actions.
+
+**Primary buttons**
+- Use an electric-blue fill or an appropriate strong blue treatment.
+- Use readable, high-contrast text.
+- Apply restrained hover feedback.
+- Keep button dimensions and padding consistent.
+
+**Secondary buttons**
+- Use dark surfaces or transparent backgrounds with restrained borders.
+- Give them a clear hover state.
+
+**Destructive buttons**
+- Use a distinct, appropriate destructive style.
+- Do not make deletion controls visually indistinguishable from ordinary actions.
+
+**Inputs**
+- Use dark, readable surfaces.
+- Apply consistent border color, spacing, radius, and typography.
+- Display a clear blue focus border when keyboard or pointer focus is active.
+- Preserve the current placeholder text and empty initial values.
+
+Implement hover, active, disabled, and keyboard-focus states where relevant.
+
+Never change what a button does merely to support a visual redesign.
+
+## 2.8 Icons
+
+Use a consistent, professional icon style throughout the application.
+
+Prefer clean outline icons with consistent stroke weight.
+
+Use icon containers only where they improve hierarchy or make navigation easier to understand.
+
+Avoid mixing emoji, unrelated icon packs, oversized illustrated icons, and highly decorative symbols.
+
+Keep icons aligned to their associated text and correctly sized relative to their controls.
+
+---
+
+# PART 3 — SHARED APPLICATION SHELL AND NAVIGATION
+
+Apply the design system consistently to the existing application shell.
+
+IRL.OS has nine pages and must remain a conventional multi-page application.
+
+The routes are:
+
+- `/` — Home
+- `/today` — Today
+- `/goals` — Goals
+- `/planner` — Planner
+- `/focus` — Focus
+- `/insights` — Insights
+- `/coach` — Coach
+- `/profile` — Profile
+- `/settings` — Settings
+
+Do not add a floating desktop route or a desktop dock.
+
+## Sidebar requirements
+
+Refine the existing sidebar or navigation system.
+
+Include:
+- The existing IRL.OS logo and branding.
+- Clearly readable navigation labels and icons.
+- A visible active-page indicator.
+- Subtle blue treatment for the active navigation item.
+- Clean hover and keyboard-focus states.
+- Consistent spacing between navigation elements.
+- Appropriate separation between main navigation and secondary profile/settings navigation if the existing structure supports it.
+
+The active page should be obvious without covering the entire sidebar in glowing effects.
+
+Do not make every navigation item a large rectangular card.
+
+On mobile, collapse the sidebar or use a suitable responsive navigation pattern. Do not squeeze the desktop sidebar into a narrow screen.
+
+## Main content area
+
+Each route should share consistent main-content alignment and top spacing.
+
+The content area should:
+- Begin at a predictable position relative to navigation.
+- Use a consistent heading and metadata arrangement.
+- Respect responsive page margins.
+- Support appropriate panel grids.
+- Remain readable without forcing every page into the same template.
+
+If the sidebar already works, preserve its behavior and modify its appearance instead of rewriting its routing logic.
+
+---
+
+# PART 4 — PAGE-BY-PAGE REDESIGN SPECIFICATION
+
+Apply the design system to each route. Do not simply change shared colors and leave every page component untouched.
+
+Every route must receive an intentional, visible visual treatment suited to its actual purpose.
+
+## PAGE 1 — HOME DASHBOARD `/`
+
+The Home dashboard's existing content and general composition have already been approved.
+
+Preserve them. Do not replace the dashboard with a completely different layout.
+
+However, the visual treatment should visibly improve.
+
+### Header
+Refine the greeting, date, and supporting text.
+
+Use a clear heading hierarchy, consistent spacing, and clean alignment between the title and any existing page actions.
+
+### Main overview
+Restyle the existing primary dashboard sections using differentiated dark surfaces.
+
+Use selected blue-bordered panels to highlight important information rather than making all panels equally prominent.
+
+### Progress and priorities
+Improve the presentation of existing progress indicators and task summaries.
+
+Use clear labels and subtle blue fills or progress accents. Ensure that progress visualizations remain readable and correctly reflect the actual values.
+
+### Supporting sections
+Improve the spacing, alignment, and consistency of supporting cards and lists already present.
+
+Do not create fake metrics, fake activity, or decorative charts just to make the page appear fuller.
+
+### Final appearance
+The Home page should retain its approved composition but look clearly more polished through improved surfaces, spacing, panel separation, borders, typography, and accent treatment.
+
+## PAGE 2 — TODAY `/today`
+
+Today must feel like a developed daily productivity workspace, not a basic checklist.
+
+### Page heading
+Create a clean, visually prominent header containing the existing page title, current date information, and relevant controls.
+
+Preserve actual functionality.
+
+### Daily overview
+Use a distinct, well-proportioned panel for genuine daily progress where supported by the current implementation.
+
+Show appropriate task counts and completion progress based on real records only.
+
+Use a restrained blue progress indicator with a clear background track.
+
+Do not invent values when the user has no tasks.
+
+### Task organization
+Give the primary task list enough width and space.
+
+Organize relevant tasks into useful groups, such as:
+- Overdue.
+- Up next.
+- Later today.
+- Completed.
+
+Show only groups that contain relevant records.
+
+Task rows should have:
+- A clear title.
+- A compact completion control.
+- Priority and deadline information where available.
+- A related-goal label where appropriate.
+- An optional contextual action menu if one already exists or is genuinely necessary.
+
+Use subtle separators or alternating surface treatments to distinguish task rows.
+
+Do not make every task an enormous glowing card.
+
+### Supporting area
+Use an appropriately sized secondary area for context already supported by real data, such as the next scheduled item, related goal progress, or focus shortcut.
+
+Keep it visually subordinate to the task list.
+
+### Empty state
+An empty Today page should remain attractive and provide a useful next action.
+
+Keep task forms empty until the user enters their own information.
+
+### Final appearance
+Today should be richer, better organized, and visibly more polished than the old implementation, without becoming crowded.
+
+## PAGE 3 — GOALS `/goals`
+
+The Goals page should emphasize long-term direction and measurable progress.
+
+### Page heading
+Use a clear title, concise supporting description where appropriate, and the existing goal-creation action.
+
+### Goal panels
+Create carefully proportioned panels for the user's existing goals.
+
+Each panel should establish a hierarchy between:
+- Goal title.
+- Short description.
+- Current status.
+- Target date where available.
+- Actual progress.
+- Related tasks or milestones.
+
+Use restrained blue borders and progress accents on selected panels.
+
+Avoid placing every field in its own nested card.
+
+### Goal progress
+Make progress indicators clear and elegant.
+
+Progress must come from actual linked tasks or explicitly recorded milestones.
+
+Do not invent percentages or achievements for goals without a reliable progress basis.
+
+### Empty state
+When there are no goals, use a composed empty state with a clear Create Goal action. Do not add example goals automatically.
+
+## PAGE 4 — PLANNER `/planner`
+
+The Planner should feel like a purpose-built scheduling tool, not a generic dashboard with a calendar pasted into it.
+
+### Header and controls
+Refine the date navigation, calendar view selection, and existing schedule-creation controls.
+
+Keep these elements aligned and easy to scan.
+
+### Calendar surface
+Use a clear calendar grid with:
+- Readable date and time labels.
+- Consistent row and column sizing.
+- Distinct scheduled-item blocks.
+- Appropriate separation between time slots.
+- Clear indication of the selected or current date where supported.
+- Enough contrast between the calendar background and scheduled items.
+
+Use blue highlights to indicate important scheduling states, selection, or emphasis.
+
+Do not use bright glowing borders on every time block.
+
+### Scheduled tasks
+Make scheduled items easy to identify without overwhelming the calendar.
+
+Preserve the distinction between a scheduled time block and a task that only has a deadline.
+
+Ensure event titles and time details do not clip.
+
+### Empty calendar
+When no items are scheduled, retain a clean calendar and helpful creation actions. Never invent events to fill the grid.
+
+## PAGE 5 — FOCUS `/focus`
+
+The Focus page should be visually distinct because its purpose is sustained attention.
+
+### Main timer
+Make the timer the primary visual focal point.
+
+Use a carefully composed central area with:
+- A large, legible timer.
+- The selected task or session title.
+- Existing session controls.
+- A restrained progress visualization.
+- Clear status feedback.
+
+The timer may use a subtle blue circular progress indicator or similarly elegant visual treatment if appropriate to the existing implementation.
+
+### Surface treatment
+Use a quiet dark surface and a subtle blue edge accent around the main focus area where appropriate.
+
+Avoid excessive borders around every control.
+
+### Controls
+Keep start, pause, resume, and finish actions visually clear and easy to use.
+
+Preserve existing timer logic and actual session recording.
+
+Do not replace functioning timer code with a decorative countdown.
+
+### Final appearance
+The page should look immersive, polished, and calm. It should not become a crowded analytics dashboard.
+
+## PAGE 6 — INSIGHTS `/insights`
+
+The Insights page should present real productivity patterns through clean, well-composed visualizations.
+
+### Layout
+Use a balanced grid of chart panels and supporting information where actual data supports those elements.
+
+Vary panel sizes according to importance rather than producing an endless sequence of identical cards.
+
+### Charts
+Improve the styling of existing charts through:
+- Clear titles and labels.
+- Readable axes and legends.
+- Restrained blue and cyan series accents.
+- Subtle gridlines.
+- Consistent margins.
+- Appropriate panel backgrounds.
+- Good text contrast.
+
+Avoid unnecessary decoration that makes graphs harder to interpret.
+
+### Metrics
+Keep metrics compact and meaningful.
+
+Only show figures supported by the actual saved records and clearly defined calculations.
+
+Do not create fictional charts, invented historical data, fabricated streaks, or unsupported percentage increases.
+
+### Empty state
+When insufficient history exists, use an honest empty state instead of pretending that activity has occurred.
+
+## PAGE 7 — COACH `/coach`
+
+The Coach should feel like an elegant conversational workspace.
+
+Its visual redesign must not change the existing Gemini integration, message-handling pipeline, or actual model behavior.
+
+### Conversation layout
+Use comfortable message spacing and clear distinction between user messages and assistant responses.
+
+Make message text readable and preserve appropriate line length.
+
+Avoid giving every message a large bordered panel.
+
+### Supporting elements
+Where relevant to the existing interface, refine:
+- Suggested-prompt controls.
+- Message input.
+- Send button.
+- Loading indicator.
+- Error and retry states.
+- Proposed-action panels.
+- Accept, edit, and reject controls.
+
+Use subtle blue highlighting for the input focus state and selected actions.
+
+### Performance and behavior
+Keep all interactions responsive.
+
+Do not add fake loading responses, canned AI answers, or extra model requests.
+
+Do not wait for decorative animations to finish before allowing the user to interact.
+
+### Final appearance
+The Coach should look polished and integrated with IRL.OS while preserving the visual clarity of a real chat interface.
+
+## PAGE 8 — PROFILE `/profile`
+
+The Profile page should feel simple, polished, and personal.
+
+### Structure
+Use a clean heading and logically grouped profile information.
+
+Improve spacing between profile details, editable fields, and existing actions.
+
+### Inputs
+Apply the shared input style, proper focus states, readable labels, and consistent control sizing.
+
+Do not prefill email addresses or other personal fields with example information.
+
+Do not add unnecessary social features, badges, or invented achievements.
+
+### Persistence
+Preserve the existing profile-saving behavior and user data.
+
+This is a visual refinement, not an authentication rewrite.
+
+## PAGE 9 — SETTINGS `/settings`
+
+The Settings page should feel organized, mature, and easy to navigate.
+
+### Grouping
+Arrange existing preferences into clear, separated sections.
+
+Use section headings, brief supporting descriptions where already appropriate, and consistent internal spacing.
+
+Do not place every preference in a completely separate large card.
+
+### Controls
+Restyle existing switches, selects, inputs, and buttons to match the common design system.
+
+Use a clear blue accent for selected states and focused controls.
+
+Ensure labels and controls align consistently.
+
+### Empty inputs
+Preserve existing empty-input behavior. Do not insert sample emails, sample preferences, or fictitious personal information.
+
+### Functionality
+All existing settings behavior and saved preferences must remain unchanged by the visual redesign.
+
+---
+
+# PART 5 — REUSABLE COMPONENTS MUST ACTUALLY CHANGE
+
+A common reason visual prompts fail is that only global colors change while individual components continue using their old styles.
+
+Inspect the real component tree and update the actual rendered components.
+
+Review and restyle, where relevant:
+- Application shell.
+- Sidebar and navigation items.
+- Page headings.
+- Panel headers.
+- Dashboard overview panels.
+- Task rows.
+- Task priority badges.
+- Progress bars.
+- Goal panels.
+- Calendar grids and time blocks.
+- Timer surface and controls.
+- Chart containers.
+- Conversation messages.
+- Chat input.
+- Action-proposal panels.
+- Form fields.
+- Buttons.
+- Switches and select menus.
+- Dialogs.
+- Tooltips.
+- Empty states.
+- Loading and error states.
+
+Create reusable components or design tokens where doing so improves consistency with the current architecture.
+
+Do not duplicate components unnecessarily.
+
+Do not add wrapper elements that break existing layouts or interactions.
+
+Do not change the underlying semantics or event handlers of functional elements.
+
+If existing CSS rules override the new design, resolve the actual cascade or component-style conflict rather than adding endless conflicting selectors.
+
+If a shared component is used across multiple pages, verify that its updated styling works correctly in every context.
+
+---
+
+# PART 6 — MICROINTERACTIONS AND STATES
+
+The design is not complete if it only looks good in a static screenshot.
+
+Apply restrained, useful visual feedback to interactive components.
+
+### Hover
+- Slightly adjust the surface color.
+- Use a subtle border-color change where appropriate.
+- Avoid excessive scaling or bright glow.
+
+### Focus
+- Provide a visible keyboard-focus outline.
+- Use the established blue accent.
+- Maintain accessible text contrast.
+
+### Pressed
+- Provide appropriate button feedback without exaggerated animation.
+
+### Loading
+- Keep loading states clean and consistent with the theme.
+- Avoid fake progress percentages.
+- Do not let optional content block the entire page unnecessarily.
+
+### Disabled
+- Clearly indicate disabled controls.
+- Keep text legible.
+
+### Success and error
+- Use meaningful status colors sparingly.
+- Preserve the actual success or error behavior of the existing feature.
+
+### Motion
+- Keep transitions short, usually around 120–220 milliseconds where suitable.
+- Respect reduced-motion preferences.
+- Avoid unnecessary motion on every panel or element.
+- Do not add animations that interfere with task completion, the calendar, typing, or the timer.
+
+---
+
+# PART 7 — RESPONSIVE DESIGN
+
+Do not design only for a single desktop screenshot.
+
+Verify the actual layouts at approximately:
+- 1920 × 1080.
+- 1440 × 900.
+- 1366 × 768.
+- 768 pixels wide.
+- 390 pixels wide.
+
+These are target viewport checks, not permission to hardcode each viewport individually.
+
+### Desktop
+Use appropriate content widths, consistent alignment, and balanced multi-column layouts when suitable.
+
+### Tablet
+Reduce grid columns and panel spacing where needed. Preserve readable content and practical controls.
+
+### Mobile
+- Collapse navigation appropriately.
+- Stack panels into a logical reading order.
+- Keep action buttons reachable.
+- Ensure task titles and metadata remain readable.
+- Prevent horizontal scrolling caused by overflowing panels.
+- Keep forms usable with touch input.
+- Ensure calendar and chart layouts remain interpretable.
+- Preserve the Focus timer's visual prominence.
+- Keep Coach messages and the input usable.
+
+Do not use transforms or arbitrary fixed widths to force desktop layouts onto a mobile screen.
+
+---
+
+# PART 8 — STRICT FUNCTIONALITY AND DATA PROTECTION
+
+This is a visual redesign only.
+
+Do not change:
+- Existing routes or page structure.
+- Task, goal, or scheduling logic.
+- Focus-session logic.
+- Existing shared data architecture.
+- Data persistence.
+- Saved user information.
+- Authentication.
+- Gemini API integration.
+- API endpoints or request formats.
+- Database configuration.
+- Existing settings behavior.
+- Input placeholders and intended empty states.
+- The logic behind any existing button.
+
+Do not reset databases, local storage, or IndexedDB.
+
+Do not delete user-created records.
+
+Do not insert fake tasks, goals, focus sessions, or analytics.
+
+Do not replace a real Gemini response with hardcoded text.
+
+Do not expose API keys or alter secret configuration.
+
+Do not reintroduce a floating desktop, desktop dock, or discarded features.
+
+Preserve the existing IRL.OS branding and blue-wave visual identity.
+
+If a component requires a minor structural adjustment to support the new layout, preserve its behavior and test its existing interactions afterward.
+
+---
+
+# PART 9 — IMPLEMENTATION WORKFLOW
+
+Follow this sequence rather than making superficial changes everywhere at once.
+
+### Step 1: Inspect
+Review the current project, shared styles, reusable components, and all nine rendered routes.
+
+Identify exactly which components retain the basic styling and why the previous visual changes had so little impact.
+
+### Step 2: Establish tokens
+Define a consistent set of background, surface, border, accent, text, spacing, radius, shadow, and typography tokens.
+
+Integrate them into the existing design system rather than introducing conflicting styles.
+
+### Step 3: Update shared components
+Restyle the application shell, navigation, buttons, inputs, standard panels, and other reusable components.
+
+Check every context in which shared components appear.
+
+### Step 4: Refine each page
+Implement the page-specific styling requirements in this specification.
+
+Do not stop after changing the shared CSS variables. Make visible changes to each page's actual component presentation.
+
+### Step 5: Compare
+Capture or inspect the previous and updated versions at the same viewport size.
+
+Confirm that the new panel hierarchy, borders, typography, spacing, and surface treatment are genuinely visible.
+
+### Step 6: Test
+Verify all routes, responsive states, keyboard focus, and existing interactions.
+
+Inspect for clipping, broken layouts, unreadable labels, excessive glow, and inconsistent styling.
+
+### Step 7: Report
+Summarize the actual changes made and any limitations. Do not claim that routes, viewports, or interactions were tested unless they were actually inspected.
+
+---
+
+# PART 10 — VISUAL ACCEPTANCE CRITERIA
+
+The visual redesign is not complete until the following are true:
+
+1. The website looks noticeably more polished than before, not almost identical.
+2. Dark panels have clear, intentional differentiation from the background.
+3. Selected panels have visible but restrained blue or cyan border accents.
+4. Blue neon finishing is present where appropriate and is not applied indiscriminately.
+5. The layout uses thoughtfully arranged panels of varied proportions.
+6. Page headings and typography have a clear hierarchy.
+7. Spacing and alignment are consistent.
+8. All nine pages follow the same design language.
+9. Each page still has a layout appropriate to its function.
+10. The existing blue-wave identity remains intact.
+11. The interface is readable at desktop, tablet, and mobile sizes.
+12. Empty states remain honest and do not introduce invented records.
+13. All existing data and functionality remain intact.
+14. The result looks inspired by the reference without copying its product or content.
+15. The changes are implemented in the actual codebase rather than a separate mockup.
+
+If a screenshot of the updated page looks almost identical to the original, revisit that page and correct the relevant component styling before declaring it complete.
+
+Do not make the redesign more futuristic simply to make the differences obvious. Increase quality through layout, contrast, component design, and controlled accents.
+
+---
+
+# FINAL DIRECTIVE
+
+This is a detailed visual redesign of the existing IRL.OS product.
+
+Implement the specified theme and panel treatment across all nine routes. Make the visual upgrade obvious through the actual rendered components, not just a few global color substitutions.
+
+Use the Finova screenshot as inspiration for structured panels, rich dark surfaces, blue accents, and subtle neon edges.
+
+Do not copy its brand or content.
+
+Keep IRL.OS recognizable, functional, responsive, and reliable.
+
+**The goal is to change how the entire application looks and feels, while preserving what the application actually does.**
+
+Inspect the existing project, implement the changes directly, verify the results, and report what was genuinely completed.

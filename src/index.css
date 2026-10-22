@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #080D18;
+    --bg-secondary: #0B1220;
+    --surface-primary: #101A2B;
+    --surface-secondary: #131F32;
+    --surface-hover: #192941;
+    --border-standard: #24354C;
+    --border-subtle-blue: #294B75;
+    --accent-blue: #3988FF;
+    --accent-cyan: #59C8FF;
+    --accent-electric: #3988FF;
+    --text-primary: #F0F5FF;
+    --text-secondary: #A7B6CA;
+    --text-muted: #7789A4;
+
+    /* Aliases for compatibility */
+    --surface-card: #101A2B;
+    --surface-elevated: #131F32;
+    --border-muted: #24354C;
+    --border-highlight: #294B75;
+    --border-electric: rgba(89, 200, 255, 0.4);
+  }
+
+  [data-theme="light"],
+  .theme-light {
+    --bg-main: #F4F6FB;
+    --bg-secondary: #EBF0F8;
+    --surface-primary: #FFFFFF;
+    --surface-secondary: #F1F5FB;
+    --surface-hover: #E8EFF8;
+    --surface-card: #FFFFFF;
+    --surface-elevated: #F1F5FB;
+    --border-standard: #D3DFEE;
+    --border-subtle-blue: #BACDE5;
+    --border-muted: #D3DFEE;
+    --border-highlight: #BACDE5;
+    --accent-blue: #2563EB;
+    --accent-cyan: #0284C7;
+    --accent-electric: #2563EB;
+    --text-primary: #0A1120;
+    --text-secondary: #42526E;
+    --text-muted: #64748B;
+    --border-electric: rgba(37, 99, 235, 0.35);
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+}
+
+.font-mono-numbers {
+  font-family: 'JetBrains Mono', monospace;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Master Finova Visual Theme Utilities */
+.finova-panel {
+  background-color: #101A2B;
+  border: 1px solid #24354C;
+  border-radius: 1rem;
+}
+
+.finova-panel-subtle {
+  background-color: #131F32;
+  border: 1px solid #24354C;
+  border-radius: 0.875rem;
+}
+
+.finova-panel-edge {
+  background-color: #101A2B;
+  border: 1px solid #294B75;
+  box-shadow: 0 0 16px -2px rgba(57, 136, 255, 0.18), inset 0 1px 0 rgba(89, 200, 255, 0.12);
+  border-radius: 1rem;
+}
+
+.finova-card-hover {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.finova-card-hover:hover {
+  background-color: #131F32;
+  border-color: #3988FF;
+  box-shadow: 0 0 20px -3px rgba(57, 136, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.finova-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid #294B75;
+  background-color: rgba(57, 136, 255, 0.1);
+  color: #59C8FF;
+}
+
+.btn-electric-primary {
+  background: linear-gradient(135deg, #2563EB 0%, #3988FF 50%, #59C8FF 100%);
+  color: #FFFFFF;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(57, 136, 255, 0.35);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-electric-primary:hover {
+  box-shadow: 0 6px 22px rgba(89, 200, 255, 0.5);
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.btn-electric-secondary {
+  background-color: #101A2B;
+  border: 1px solid #24354C;
+  color: #F0F5FF;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-electric-secondary:hover {
+  background-color: #131F32;
+  border-color: #294B75;
+  color: #59C8FF;
+}
+
+/* Serif Hero Italic Typography */
+.font-serif-hero {
+  font-family: 'Instrument Serif', 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Glowing Hero CTA Button */
+.btn-hero-glow {
+  background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 50%, #38bdf8 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(186, 230, 253, 0.4);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.45), 0 4px 16px rgba(14, 165, 233, 0.3);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-hero-glow:hover {
+  box-shadow: 0 0 40px rgba(56, 189, 248, 0.7), 0 6px 24px rgba(14, 165, 233, 0.5);
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080D18;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #24354C;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #294B75;
+}
+
+/* Reduced motion preference respect */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

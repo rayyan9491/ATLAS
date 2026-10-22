@@ -1,0 +1,8 @@
+{
+  "name": "ATLAS",
+  "description": "Your life. Your system. Your next move. A personal operating system for real life.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

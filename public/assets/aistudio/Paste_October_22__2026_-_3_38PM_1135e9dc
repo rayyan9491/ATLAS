@@ -1,0 +1,687 @@
+# IRL.OS — MASTER BUILD PROMPT
+## Complete Multi-Page Productivity Application
+
+You are continuing an EXISTING project called IRL.OS. Your task is to transform it into a polished, cohesive, genuinely functional, AI-powered personal productivity application designed especially for students.
+
+This is an implementation task, not a brainstorming exercise. Inspect the existing project, understand its current architecture, preserve working features, and make the actual code changes.
+
+The visual identity has already been established. The Home dashboard is approved. The other feature pages have an established visual direction, but the Today page needs more depth and usefulness.
+
+The final result should feel like a real, thoughtfully designed startup product, not a generic SaaS template, a futuristic UI concept, a static mockup, or an AI-generated presentation.
+
+# 1. CRITICAL PRODUCT DECISIONS
+
+These decisions are final and must be followed throughout implementation.
+
+### A. IRL.OS is a normal multi-page application
+
+Build nine separate, navigable pages that work together through a shared application shell and shared user data.
+
+The routes are:
+
+- `/` — Home dashboard
+- `/today` — Daily tasks and priorities
+- `/goals` — Personal and academic goals
+- `/planner` — Calendar and scheduling
+- `/focus` — Focus timer and sessions
+- `/insights` — Progress and meaningful analytics
+- `/coach` — AI productivity coach
+- `/profile` — User profile
+- `/settings` — Application preferences
+
+Each route must have its own dedicated page and layout.
+
+Do not place all features on one page. Do not create separate disconnected applications.
+
+### B. REMOVE THE FLOATING DESKTOP CONCEPT ENTIRELY
+
+I no longer want the floating desktop environment.
+
+Do not build or preserve:
+- A `/desktop` route.
+- A floating-window desktop interface.
+- A bottom desktop application dock.
+- A desktop simulator.
+- A window-management environment.
+- A desktop wallpaper workspace with floating application windows.
+
+Do not spend implementation time improving or recreating that concept.
+
+Instead, use a clean, premium sidebar or compact navigation system that connects all nine pages.
+
+The application should still have its established IRL.OS identity, dark colors, and blue-wave visual treatment where appropriate. Removing the desktop does not mean removing the brand's personality.
+
+### C. Keep the approved visual identity
+
+The existing IRL.OS project is the source of truth for its branding.
+
+Preserve the existing:
+- IRL.OS name and branding.
+- Dark, premium interface.
+- Deep navy and charcoal surfaces.
+- Electric-blue, cyan, and restrained violet accents.
+- Blue flowing-wave background and existing background animation.
+- Established typography.
+- Appropriate animations and visual details.
+
+Do not redesign the entire website from scratch.
+
+Do not introduce an unrelated theme or blindly reproduce another product's branding.
+
+### D. Home is already approved
+
+Do not replace the existing Home dashboard with a different dashboard design.
+
+Keep its current layout and visual composition. Make only the changes needed to connect it to real shared application data, ensure its buttons work, and maintain consistency with the rest of the application.
+
+### E. Today requires a substantial improvement
+
+The existing Today page is too simple.
+
+Make it more informative, visually developed, and useful for a real student. Introduce better task organization, actual daily progress, and relevant supporting context without turning it into an overcrowded dashboard.
+
+### F. Humanize the entire website
+
+All user-facing text should sound natural, clear, and human. Eliminate generic AI-generated corporate copy, repetitive descriptions, unnecessary jargon, and robotic wording throughout the entire application.
+
+# 2. VISUAL REFERENCE IMAGE MAPPING — IMPORTANT
+
+I am attaching nine reference images with this prompt. Each image has a specific purpose.
+
+Identify the images by their actual visual content and match each one to the corresponding page below. If the images are uploaded in the order listed, use that order as an additional guide. If their upload order differs, match them by their contents.
+
+Do not use any reference for the wrong page. Do not create a tenth page.
+
+## IMAGE 1 — HOME DASHBOARD
+**Route: `/`**
+
+Identify the reference image showing a polished student productivity dashboard with a greeting, daily priorities, goal progress, and a clear overview of the user's day.
+
+Use it to understand the established dashboard layout and overall visual direction.
+
+Important: the current IRL.OS Home dashboard is already approved. Keep the existing implementation rather than replacing it with a new interpretation of the reference.
+
+## IMAGE 2 — TODAY
+**Route: `/today`**
+
+Identify the reference image showing a detailed daily task-management interface with organized task sections, checkboxes, priorities, due times, and daily progress.
+
+This reference is especially important because Today currently feels too simple.
+
+Use it to develop a richer task-management page with a strong primary task list and useful secondary information.
+
+The finished page must be functional, responsive, and connected to the same task records as every other page.
+
+## IMAGE 3 — GOALS
+**Route: `/goals`**
+
+Identify the reference image showing personal or academic goals, milestones, progress indicators, target dates, and related tasks.
+
+Use it to guide the goal-management layout.
+
+Users must be able to create and manage goals and track real progress toward them.
+
+## IMAGE 4 — PLANNER
+**Route: `/planner`**
+
+Identify the reference image showing a weekly or daily calendar with scheduled events, task blocks, dates, and time labels.
+
+Use it to guide the scheduling interface.
+
+Tasks created elsewhere must appear in the Planner when their scheduling information requires it.
+
+## IMAGE 5 — FOCUS ROOM
+**Route: `/focus`**
+
+Identify the reference image showing a large, centered countdown timer, a selected task, and minimal session controls on a dark background.
+
+Use it to create a calm, immersive focus environment.
+
+The timer must actually work. Do not simply imitate a timer visually.
+
+## IMAGE 6 — INSIGHTS
+**Route: `/insights`**
+
+Identify the reference image showing productivity analytics, charts, completed tasks, focus time, and goal progress.
+
+Use it to create a restrained analytics interface using real recorded data.
+
+Never fabricate charts, statistics, historical activity, or achievements.
+
+## IMAGE 7 — AI COACH
+**Route: `/coach`**
+
+Identify the reference image showing a conversational AI productivity assistant, messages, study-planning suggestions, and proposed actions.
+
+Use it to guide the Coach interface.
+
+The Coach must use the actual configured AI model integration and available user context. It must not be a collection of canned replies disguised as AI.
+
+## IMAGE 8 — PROFILE
+**Route: `/profile`**
+
+Identify the reference image showing a simple user profile with an editable display name and relevant personal information.
+
+Use it to create a clean, functional profile page without unnecessary social features or fabricated achievements.
+
+## IMAGE 9 — SETTINGS
+**Route: `/settings`**
+
+Identify the reference image showing grouped settings sections, appearance preferences, switches, and configuration controls.
+
+Use it to organize application preferences into clear, understandable categories.
+
+Every implemented control must change a real setting and persist that preference when appropriate.
+
+## Rules for all nine reference images
+
+The images are design and layout guidance, not permission to copy another brand.
+
+Use them to understand each page's information hierarchy, proportions, components, and interaction patterns.
+
+Adapt their layouts to the existing IRL.OS visual identity.
+
+Keep all nine pages recognizably part of the same application. Use consistent navigation, typography, spacing, colors, control styles, and interaction feedback.
+
+Do not place the nine reference images inside the finished application as decorative screenshots. Build actual page components inspired by them.
+
+# 3. INSPECT THE EXISTING PROJECT BEFORE MODIFYING IT
+
+Before implementation, inspect:
+- The framework and project structure.
+- Existing routing and shared components.
+- Current styling and background effects.
+- Existing data models and persistence.
+- Existing authentication, if any.
+- State management and API integrations.
+- Existing functionality that already works.
+
+Reuse the current codebase, dependencies, components, backend, database, and state-management approach wherever practical.
+
+Preserve working functionality.
+
+Do not generate a second, disconnected application. Do not replace working components simply because you can rewrite them.
+
+Make targeted modifications and implement missing functionality directly in the existing project.
+
+# 4. SHARED APPLICATION SHELL AND NAVIGATION
+
+Create a consistent application shell shared across all nine routes.
+
+Use a refined sidebar or compact navigation layout that suits the existing design.
+
+Navigation must include:
+- Home
+- Today
+- Goals
+- Planner
+- Focus
+- Insights
+- Coach
+- Profile
+- Settings
+
+Requirements:
+- Every navigation item opens its correct route.
+- Clearly indicate the active route.
+- Provide appropriate hover, focus, and pressed states.
+- Keep navigation consistent between pages.
+- Make the layout work on desktop, tablet, and mobile.
+- On narrow screens, collapse the navigation intelligently rather than squeezing the entire desktop sidebar into the viewport.
+- Ensure browser refreshes and direct route navigation work correctly.
+- Do not make navigation dependent on an obsolete desktop dock or floating windows.
+
+The design should feel cohesive and premium without adding unnecessary UI elements.
+
+# 5. HOME DASHBOARD — PRESERVE THE EXISTING DESIGN
+
+Route: `/`
+
+The Home dashboard is approved. Preserve its existing visual layout.
+
+Do not replace it, redesign it, or radically rearrange it.
+
+Connect the existing interface to the shared application data where necessary.
+
+The page should show relevant information backed by real records, including:
+- The user's display name.
+- The actual current date.
+- Today's priorities.
+- Relevant upcoming deadlines.
+- Active goal progress.
+- The next scheduled item when one exists.
+- Convenient access to Focus and Coach.
+
+If no data exists, show thoughtful empty states and useful actions.
+
+Do not create fake task counts, goal percentages, streaks, or other fabricated statistics.
+
+Keep the page clean and avoid duplicating every feature from every other page.
+
+# 6. TODAY — MAKE IT SUBSTANTIALLY MORE USEFUL
+
+Route: `/today`
+
+Today should feel like a developed daily productivity workspace, not a plain checklist.
+
+Follow the attached Today reference while preserving the established IRL.OS visual identity.
+
+## A. Page header
+
+Include:
+- A natural heading, such as "Your day".
+- The actual date and day of the week.
+- A short summary based on actual task data.
+- A prominent, functional Add Task action.
+- A clear way to navigate between dates and return to today.
+
+Avoid lengthy descriptions, generic motivational slogans, and excessive decorative elements.
+
+## B. Daily progress
+
+Create a visually clear but compact progress section that shows:
+- Tasks completed for the selected day.
+- Tasks remaining.
+- Actual completion progress.
+- Scheduled commitments or remaining available time only when the necessary information exists and the calculation is reliable.
+
+All numbers must come from the underlying data.
+
+Handle the empty state correctly. When there are no tasks, do not display fabricated percentages or misleading progress.
+
+## C. Main task list
+
+The task list should remain the main focus of the page.
+
+Organize tasks into appropriate sections when relevant:
+- Overdue.
+- Up next.
+- Later today.
+- Completed.
+
+Only display sections when they contain relevant data. Do not fill the page with empty sections just to match a screenshot.
+
+Each task should show useful information when available:
+- Task title.
+- Completion checkbox.
+- Priority.
+- Due date or time.
+- Associated goal.
+- Relevant overdue or due-soon indication.
+
+Use thoughtful spacing, readable text, subtle dividers, restrained surface treatments, and clear visual hierarchy.
+
+Do not make every task a huge card. The page must remain scannable even when the user has many tasks.
+
+## D. Supporting context
+
+Add a compact, secondary area that can display relevant information such as:
+- The next scheduled event or task.
+- Progress toward a related goal.
+- A quick way to start Focus for a selected task.
+- A contextual shortcut to ask Coach for help planning the rest of the day.
+
+Only show context that is supported by the user's data.
+
+Do not duplicate the full Home dashboard or add multiple unnecessary summary cards.
+
+## E. Actual functionality
+
+Users must be able to:
+- Create tasks.
+- Edit tasks.
+- Mark tasks complete and incomplete.
+- Delete tasks.
+- Assign priorities.
+- Add due dates and times.
+- Schedule or reschedule tasks.
+- Associate tasks with goals.
+- Filter tasks by relevant attributes.
+- Open a focus session for a chosen task when supported.
+
+All task changes must update the shared underlying records and appear wherever those records are used.
+
+## F. Empty states
+
+When there are no tasks for the selected date, display a useful, polished empty state and an obvious action to add a task or plan the day.
+
+Never insert invented assignments, fake deadlines, sample activity, or fabricated task records to make the UI appear busy.
+
+The goal is **more useful, not more cluttered**.
+
+# 7. GOALS
+
+Route: `/goals`
+
+Create a functional goal-management page for academic and personal goals.
+
+Support:
+- Creating, editing, and deleting goals.
+- Goal titles and optional descriptions.
+- Target dates when applicable.
+- Milestones where supported.
+- Linking tasks to goals.
+- Viewing goal progress based on actual task completion or explicitly tracked milestones.
+- Clearly identifying active and completed goals.
+
+Use the attached reference for the information hierarchy.
+
+Do not show arbitrary progress percentages. If a goal has no linked tasks or defined progress basis, display its status honestly rather than inventing a number.
+
+Changes in task completion should update relevant goal progress throughout the application.
+
+# 8. PLANNER
+
+Route: `/planner`
+
+Build a functional day/week scheduling interface informed by the attached reference.
+
+Include:
+- Day and week views where practical.
+- Date navigation.
+- Scheduled tasks and relevant deadlines.
+- Clear time labels.
+- Task details.
+- The ability to assign or change scheduling information.
+
+Distinguish between an actual scheduled time block and a task that simply has a deadline.
+
+Changes must propagate to Today and Home.
+
+Do not fabricate calendar events or claim external calendar integration unless it is actually implemented.
+
+# 9. FOCUS ROOM
+
+Route: `/focus`
+
+Build a calm and distraction-free focus experience.
+
+Include:
+- A prominent countdown timer.
+- A selected task or session title.
+- Start, pause, resume, and finish controls.
+- A configurable duration where supported.
+- Completed-session history.
+- A convenient way to return to the task or Today.
+
+The countdown must correctly track elapsed time and handle pause/resume behavior.
+
+Record completed sessions with their actual duration and optional task association.
+
+Do not count a session as completed when it was never completed. Do not fake timer progress.
+
+Keep this interface intentionally minimal and focused.
+
+# 10. INSIGHTS
+
+Route: `/insights`
+
+Provide meaningful insights derived from actual records.
+
+Potential information includes:
+- Task completion over time.
+- Recorded focus time.
+- Progress toward goals.
+- Outstanding work.
+- Changes in workload across relevant dates.
+
+Use readable charts and concise summaries.
+
+Requirements:
+- All metrics must derive from actual data.
+- Label date ranges and measurements clearly.
+- Do not manufacture historical data to fill charts.
+- Do not show fake streaks or impressive-looking but unsupported numbers.
+- Do not overcomplicate the page with numerous KPI cards.
+
+When there is insufficient data, show an honest and helpful empty state explaining what the user can track to unlock meaningful insights.
+
+# 11. AI PRODUCTIVITY COACH
+
+Route: `/coach`
+
+The Coach must use a real AI model integration supported by the existing project.
+
+If Gemini is already configured, preserve and use that integration. Inspect the existing implementation before deciding whether backend or integration changes are necessary.
+
+The Coach should understand relevant authorized context, including when available:
+- Today's tasks.
+- Active goals.
+- Upcoming deadlines.
+- Scheduled commitments.
+- Focus history.
+- Time available, when the user provides it.
+
+The Coach should help users prioritize work and create realistic plans, not simply return generic motivational messages.
+
+For example, when a student explains that an assignment is due tomorrow, two chapters need revision, and two hours are available, the Coach should use that information to propose an appropriate plan.
+
+## Proposed actions
+
+When Coach suggests creating or changing tasks or schedules:
+1. Present the proposed changes clearly.
+2. Allow the user to review them.
+3. Allow the user to accept, edit, or reject them.
+4. Apply approved changes to the actual shared data.
+5. Show accepted changes throughout relevant pages.
+
+Do not silently make significant schedule changes without approval.
+
+Display real loading and error states. If the AI service is unavailable, explain that appropriately instead of inventing a successful response.
+
+Never expose private API keys or secrets in client-side code.
+
+Do not claim that an AI response was generated live if it was hardcoded.
+
+# 12. PROFILE
+
+Route: `/profile`
+
+Build a simple, functional profile page.
+
+Users should be able to edit their display name and other profile information supported by the current backend.
+
+Persist supported changes correctly.
+
+Keep the design clean. Do not add unnecessary public profiles, social features, fake badges, fabricated achievements, or unrelated complexity.
+
+# 13. SETTINGS
+
+Route: `/settings`
+
+Build a clear, organized settings page based on the supplied reference.
+
+Include useful settings supported by the application, such as:
+- Appearance and theme.
+- Background animation preferences.
+- Reduced motion.
+- Focus-session preferences.
+- Planning preferences.
+- Coach preferences.
+- Notification settings when notifications are implemented.
+- Privacy and data controls supported by the backend.
+
+Group related settings logically.
+
+Every implemented switch, select, input, and button must have real behavior. Persist relevant preferences.
+
+Do not create decorative switches that do nothing. Do not claim support for features that are not implemented.
+
+# 14. SIMPLE DISPLAY-NAME ONBOARDING
+
+Keep onboarding extremely short.
+
+For a new user:
+1. Ask for their display name.
+2. Let them enter it.
+3. As soon as they submit it, take them directly to the real Home dashboard.
+
+There must be no extra welcome deck, mandatory introductory presentation, elaborate setup wizard, or unnecessary onboarding screens.
+
+Do not name any screen "Master 1-Page Deck" or use a presentation deck as the application home.
+
+The display-name screen is simply a quick entry point into IRL.OS.
+
+Persist the display name and onboarding completion status so returning users are not asked to enter their name again unnecessarily.
+
+Preserve existing authentication where required. If appropriate anonymous authentication is already supported, reuse it.
+
+Do not pretend a display name by itself is a secure account or guarantees cross-device data recovery. Isolate private data according to the actual authentication and backend capabilities.
+
+# 15. ONE CONNECTED SOURCE OF TRUTH
+
+All pages must share the same underlying data.
+
+A task created in Today must not become a separate task when shown in Home or Planner.
+
+Ensure the following connections work:
+
+- Creating a goal makes it available to relevant pages.
+- Tasks can be associated with goals.
+- Scheduling a task makes it appear in the relevant Planner view.
+- Today's task list reflects the actual task records and selected date.
+- Completing a task updates its state everywhere.
+- Goal progress reflects its linked tasks or explicitly tracked milestones.
+- Focus sessions can be associated with tasks.
+- Completed focus sessions update actual session history.
+- Insights use the actual task, goal, and focus records.
+- Coach uses available context and updates the shared records only when the user approves proposed actions.
+- Profile and settings changes persist.
+
+Reuse the existing database, state management, and persistence methods wherever possible.
+
+Do not create independent mock datasets for each route.
+
+# 16. HUMANIZE ALL COPY ACROSS THE ENTIRE WEBSITE
+
+Review all user-facing text in:
+- Navigation.
+- Headings.
+- Buttons.
+- Forms.
+- Tooltips.
+- Empty states.
+- Dialogs.
+- Validation messages.
+- Loading and error messages.
+- Settings.
+- Coach.
+- Profile.
+- Every page in the application.
+
+Write as though this is a real, thoughtfully designed product for students.
+
+The tone should be natural, clear, concise, confident, and human.
+
+Avoid robotic wording, repetitive AI-style phrases, generic corporate marketing language, unnecessary jargon, fake urgency, excessive explanations, and exaggerated claims.
+
+Use straightforward language such as:
+- "What needs your attention today?"
+- "Let's make a plan that fits your day."
+- "You haven't added any goals yet."
+- "Pick up where you left off."
+- "That task is finished. Nice work."
+
+These are examples of tone, not text to repeat on every page.
+
+Keep the copy natural and context-appropriate throughout the entire application, including less prominent interfaces and error states.
+
+# 17. VISUAL CONSISTENCY AND RESPONSIVE QUALITY
+
+Use the existing IRL.OS design system across all nine pages.
+
+Maintain:
+- The approved brand and logo.
+- Deep navy and charcoal surfaces.
+- Blue-wave visual identity and appropriate background animation.
+- Existing typography.
+- Restrained blue, cyan, and violet accents.
+- Consistent spacing, buttons, inputs, navigation, dialogs, and controls.
+- Subtle, purposeful interaction feedback.
+
+Do not make every page visually identical. Each route has a different purpose and should have an appropriate layout.
+
+The Home page should retain its existing appearance.
+
+Today should be more developed and informative than before.
+
+Focus should be calmer and less distracting.
+
+Planner should prioritize readable dates and time blocks.
+
+Coach should prioritize conversation and actionable proposals.
+
+Settings should prioritize clarity and organization.
+
+Avoid excessive glowing effects, excessive glassmorphism, random floating panels, oversized decorative cards, needless animation, and visual clutter.
+
+Ensure layouts are usable on common desktop sizes and narrow mobile screens. Prevent clipped text, overlapping components, horizontal overflow, and unreadable controls.
+
+Respect reduced-motion preferences where supported.
+
+# 18. STRICTLY EXCLUDED FEATURES
+
+Do not build:
+- The floating desktop environment.
+- Floating desktop application windows.
+- A desktop dock.
+- A desktop simulator.
+- A live system sandbox.
+- System architecture visualizations.
+- Technical showcase interfaces.
+- Milestone roadmaps that are unrelated to the user's actual goals.
+- A presentation-deck home page.
+- Fake AI responses.
+- Fake tasks or fake historical activity presented as real user data.
+- Fake charts, productivity numbers, streaks, or achievements.
+- Decorative controls that do nothing.
+- Unnecessary features invented solely to make the project look more complicated.
+
+Focus on the nine actual productivity pages.
+
+# 19. IMPLEMENTATION AND TESTING ORDER
+
+Implement the work in this order:
+
+1. Inspect the existing project.
+2. Preserve the approved Home dashboard.
+3. Implement the shared application shell and navigation.
+4. Complete the nine dedicated pages using the image mapping provided above.
+5. Give Today its richer task layout and contextual supporting information.
+6. Remove any obsolete floating desktop and desktop-dock implementation.
+7. Connect all pages to shared task, goal, planner, focus, profile, and preference data.
+8. Implement or repair display-name onboarding.
+9. Verify that the AI Coach uses the actual available model integration.
+10. Verify that approved Coach actions update the shared data.
+11. Test the complete task and goal workflow.
+12. Test loading states, empty states, errors, and validation.
+13. Check responsive layouts, visual consistency, and existing feature preservation.
+14. Fix implementation errors before declaring completion.
+
+Do not redesign approved components just to create more work.
+
+Do not add unnecessary libraries or replace the current architecture without a real technical reason.
+
+Do not claim a test passed unless it was actually performed.
+
+# 20. FINAL ACCEPTANCE CRITERIA
+
+The project is complete only when:
+
+- IRL.OS is a functional nine-page application.
+- The nine supplied reference images have been interpreted according to the correct page mapping.
+- The existing Home dashboard remains visually approved.
+- The floating desktop feature and dock are not part of the product.
+- Today has a visibly more developed and genuinely useful interface.
+- The sidebar or compact navigation connects all pages.
+- Tasks, goals, scheduling, and focus sessions use connected real data.
+- Insights reflect actual recorded activity.
+- The Coach uses real model integration and available context.
+- Proposed Coach actions can be reviewed before being applied.
+- Display-name onboarding leads directly into the actual Home page.
+- Copy throughout the website sounds natural and human.
+- Visible controls work as advertised.
+- Layouts remain readable and usable across supported screen sizes.
+- Fake data, fake AI, dead buttons, and disconnected mockups are not used to disguise incomplete functionality.
+
+Implement these changes directly in the existing IRL.OS project. Do not return another plan, another design proposal, or a static mockup. Build the actual application, preserve what is already working, and clearly identify any genuine limitations that remain.
